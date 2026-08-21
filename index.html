@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imbui Calculator - Gold Token vs Market (Tibia)</title>
+    <meta name="description" content="Descubra a forma mais barata de encantar seus equipamentos no Tibia. Compare os preços de Gold Tokens com itens de imbuement do market em tempo real.">
+    <meta name="keywords" content="tibia, imbuement, gold token, calculadora, mana leech, life leech, critical hit, yana, npc yana">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Tabs Navigation -->
+    <nav class="tabs-nav">
+        <div class="container tabs-container">
+            <button class="tab-btn active" data-tab="tab-imbui" onclick="switchTab('tab-imbui')">
+                <img src="imagens/Imbuing_Shrine.gif" alt="" class="tab-icon">
+                Calculadora de Imbui
+            </button>
+            <button class="tab-btn" data-tab="tab-loot" onclick="switchTab('tab-loot')">
+                <img src="imagens/Gold_Coin.gif" alt="" class="tab-icon">
+                Divisor de Loot (Party)
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="imagens/Imbuing_Shrine.gif" alt="Imbuing Shrine" class="shrine-logo" id="hero-logo-img">
+            </div>
+            <h1 id="hero-title">Imbui Calculator</h1>
+            <p id="hero-subtitle">Compare os custos de mercado dos creature products contra o valor dos Gold Tokens e descubra a melhor combinação econômica para seus imbuements.</p>
+        </div>
+    </header>
+
+    <!-- ABA 1: CALCULADORA DE IMBUI -->
+    <div id="tab-imbui" class="tab-content active">
+        <div class="container">
+
+            <!-- Barra do Preço do Gold Token -->
+            <section class="token-controller">
+                <div class="token-label-container">
+                    <div class="token-icon-glow">
+                        <img src="imagens/Gold_Token.gif" alt="Gold Token" class="pixel-item">
+                    </div>
+                <label for="gold-token-price" class="token-label">Preço do Gold Token no Market:</label>
+            </div>
+            <div class="token-input-group">
+                <span>GP</span>
+                <input type="number" id="gold-token-price" class="input-gold-token" placeholder="Ex: 40000" value="40000" min="0">
+            </div>
+        </section>
+
+        <main class="main-layout">
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!--  OFENSIVOS PRINCIPAIS                               -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <h2 class="section-group-heading"><span>⚔️ Ofensivos Principais</span></h2>
+            <section class="imbuements-grid">
+
+                <!-- Void -->
+                <article class="imbu-card void-theme" id="card-void">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Void_(Roubo_de_Mana).gif" alt="Void" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Void</h2><span>Mana Leech (Armas &amp; Elmos)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Rope_Belt.gif" alt="Rope Belt" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Rope Belt</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-rope_belt" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Silencer_Claws.gif" alt="Silencer Claw" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Silencer Claw</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-silencer_claw" class="input-creature" value="3500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Some_Grimeleech_Wings.gif" alt="Grimeleech Wing" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Grimeleech Wing</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-some_grimeleech_wings" class="input-creature" value="12000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="void" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="void" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="void" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Vampirism -->
+                <article class="imbu-card vamp-theme" id="card-vampirism">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Vampirism_(Roubo_de_Vida).gif" alt="Vampirism" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Vampirism</h2><span>Life Leech (Armas &amp; Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Vampire_Teeth.gif" alt="Vampire Teeth" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Vampire Teeth</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-vampire_teeth" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Bloody_Pincers.gif" alt="Bloody Pincer" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Bloody Pincer</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-bloody_pincer" class="input-creature" value="7000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Piece_of_Dead_Brain.gif" alt="Piece of Dead Brain" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Piece of Dead Brain</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-piece_of_dead_brain" class="input-creature" value="15000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="vampirism" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="vampirism" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="vampirism" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Strike -->
+                <article class="imbu-card strike-theme" id="card-strike">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Strike_(Dano_Crítico).gif" alt="Strike" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Strike</h2><span>Critical Hit (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Protective_Charm.gif" alt="Protective Charm" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Protective Charm</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-protective_charm" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Sabretooth_(Item).gif" alt="Sabretooth" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Sabretooth</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-sabretooth" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Vexclaw_Talon.gif" alt="Vexclaw Talon" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Vexclaw Talon</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-vexclaw_talon" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="strike" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="strike" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="strike" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!--  ELEMENTAL OFENSIVOS                                -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <h2 class="section-group-heading"><span>🔥 Elemental Ofensivos</span></h2>
+            <section class="imbuements-grid">
+
+                <!-- Scorch -->
+                <article class="imbu-card fire-theme" id="card-scorch">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Scorch_(Dano_de_Fogo).gif" alt="Scorch" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Scorch</h2><span>Dano de Fogo (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Fiery_Heart.gif" alt="Fiery Heart" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Fiery Heart</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-fiery_heart" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Green_Dragon_Scale.gif" alt="Green Dragon Scale" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Green Dragon Scale</span><span class="creature-qty">5x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-green_dragon_scale" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Demon_Horn.gif" alt="Demon Horn" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Demon Horn</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-demon_horn" class="input-creature" value="20000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="scorch" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="scorch" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="scorch" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Venom -->
+                <article class="imbu-card earth-theme" id="card-venom">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Venom_(Dano_de_Terra).gif" alt="Venom" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Venom</h2><span>Dano de Terra (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Swamp_Grass.gif" alt="Swamp Grass" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Swamp Grass</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-swamp_grass" class="input-creature" value="1000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Poisonous_Slime.gif" alt="Poisonous Slime" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Poisonous Slime</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-poisonous_slime" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Slime_Heart.gif" alt="Slime Heart" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Slime Heart</span><span class="creature-qty">2x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-slime_heart" class="input-creature" value="40000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="venom" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="venom" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="venom" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Frost -->
+                <article class="imbu-card ice-theme" id="card-frost">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Frost_(Dano_de_Gelo).gif" alt="Frost" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Frost</h2><span>Dano de Gelo (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Frosty_Heart.gif" alt="Frosty Heart" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Frosty Heart</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-frosty_heart" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Seacrest_Hair.gif" alt="Seacrest Hair" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Seacrest Hair</span><span class="creature-qty">10x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-seacrest_hair" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Polar_Bear_Paw.gif" alt="Polar Bear Paw" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Polar Bear Paw</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-polar_bear_paw" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="frost" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="frost" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="frost" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Electrify -->
+                <article class="imbu-card energy-theme" id="card-electrify">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Electrify_(Dano_de_Energia).gif" alt="Electrify" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Electrify</h2><span>Dano de Energia (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Rorc_Feather.gif" alt="Rorc Feather" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Rorc Feather</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-rorc_feather" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Peacock_Feather_Fan.gif" alt="Peacock Feather Fan" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Peacock Feather Fan</span><span class="creature-qty">5x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-peacock_feather_fan" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Energy_Vein.gif" alt="Energy Vein" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Energy Vein</span><span class="creature-qty">1x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-energy_vein" class="input-creature" value="60000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="electrify" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="electrify" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="electrify" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Reap -->
+                <article class="imbu-card death-theme" id="card-reap">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Reap_(Dano_de_Morte).gif" alt="Reap" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Reap</h2><span>Dano de Morte (Armas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Pile_of_Grave_Earth.gif" alt="Pile of Grave Earth" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Pile of Grave Earth</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-pile_of_grave_earth" class="input-creature" value="1500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Demonic_Skeletal_Hand.gif" alt="Demonic Skeletal Hand" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Demonic Skeletal Hand</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-demonic_skeletal_hand" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Petrified_Scream.gif" alt="Petrified Scream" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Petrified Scream</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-petrified_scream" class="input-creature" value="15000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="reap" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="reap" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="reap" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!--  PROTEÇÕES ELEMENTAIS                               -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <h2 class="section-group-heading"><span>🛡️ Proteções Elementais</span></h2>
+            <section class="imbuements-grid">
+
+                <!-- Lich Shroud -->
+                <article class="imbu-card death-theme" id="card-lich_shroud">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Lich_Shroud_(Proteção_de_Morte).gif" alt="Lich Shroud" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Lich Shroud</h2><span>Proteção Morte (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Flask_of_Embalming_Fluid.gif" alt="Flask of Embalming Fluid" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Flask of Embalming Fluid</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-flask_of_embalming_fluid" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Gloom_Wolf_Fur.gif" alt="Gloom Wolf Fur" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Gloom Wolf Fur</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-gloom_wolf_fur" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Mystical_Hourglass.gif" alt="Mystical Hourglass" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Mystical Hourglass</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-mystical_hourglass" class="input-creature" value="25000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="lich_shroud" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="lich_shroud" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="lich_shroud" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Snake Skin -->
+                <article class="imbu-card earth-theme" id="card-snake_skin">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Snake_Skin_(Proteção_de_Terra).gif" alt="Snake Skin" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Snake Skin</h2><span>Proteção Terra (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Piece_of_Swampling_Wood.gif" alt="Piece of Swampling Wood" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Piece of Swampling Wood</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-piece_of_swampling_wood" class="input-creature" value="1500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Snake_Skin.gif" alt="Snake Skin" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Snake Skin</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-snake_skin_item" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Brimstone_Fangs.gif" alt="Brimstone Fang" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Brimstone Fang</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-brimstone_fang" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="snake_skin" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="snake_skin" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="snake_skin" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Dragon Hide -->
+                <article class="imbu-card fire-theme" id="card-dragon_hide">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Dragon_Hide_(Proteção_de_Fogo).gif" alt="Dragon Hide" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Dragon Hide</h2><span>Proteção Fogo (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Green_Dragon_Leather.gif" alt="Green Dragon Leather" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Green Dragon Leather</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-green_dragon_leather" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Blazing_Bone.gif" alt="Blazing Bone" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Blazing Bone</span><span class="creature-qty">10x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-blazing_bone" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Draken_Sulphur.gif" alt="Draken Sulphur" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Draken Sulphur</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-draken_sulphur" class="input-creature" value="20000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="dragon_hide" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="dragon_hide" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="dragon_hide" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Quara Scale -->
+                <article class="imbu-card ice-theme" id="card-quara_scale">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Quara_Scale_(Proteção_de_Gelo).gif" alt="Quara Scale" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Quara Scale</h2><span>Proteção Gelo (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Winter_Wolf_Fur.gif" alt="Winter Wolf Fur" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Winter Wolf Fur</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-winter_wolf_fur" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Thick_Fur.gif" alt="Thick Fur" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Thick Fur</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-thick_fur" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Deepling_Warts.gif" alt="Deepling Wart" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Deepling Wart</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-deepling_wart" class="input-creature" value="6000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="quara_scale" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="quara_scale" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="quara_scale" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Cloud Fabric -->
+                <article class="imbu-card energy-theme" id="card-cloud_fabric">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Cloud_Fabric_(Proteção_de_Energia).gif" alt="Cloud Fabric" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Cloud Fabric</h2><span>Proteção Energia (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Wyvern_Talisman.gif" alt="Wyvern Talisman" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Wyvern Talisman</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-wyvern_talisman" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Crawler_Head_Plating.gif" alt="Crawler Head Plating" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Crawler Head Plating</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-crawler_head_plating" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Wyrm_Scale.gif" alt="Wyrm Scale" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Wyrm Scale</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-wyrm_scale" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="cloud_fabric" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="cloud_fabric" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="cloud_fabric" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Demon Presence -->
+                <article class="imbu-card holy-theme" id="card-demon_presence">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Demon_Presence_(Proteção_de_Sagrado).gif" alt="Demon Presence" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Demon Presence</h2><span>Proteção Santo (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Cultish_Robe.gif" alt="Cultish Robe" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Cultish Robe</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-cultish_robe" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Cultish_Mask.gif" alt="Cultish Mask" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Cultish Mask</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-cultish_mask" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Hellspawn_Tail.gif" alt="Hellspawn Tail" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Hellspawn Tail</span><span class="creature-qty">20x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-hellspawn_tail" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="demon_presence" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="demon_presence" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="demon_presence" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Vibrancy -->
+                <article class="imbu-card prot-theme" id="card-vibrancy">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Vibrancy_(Remoção_de_Paralisia).gif" alt="Vibrancy" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Vibrancy</h2><span>Remove Paralisia (Botas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Wereboar_Hooves.gif" alt="Wereboar Hoof" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Wereboar Hoof</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-wereboar_hoof" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Crystallized_Anger.gif" alt="Crystallized Anger" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Crystallized Anger</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-crystallized_anger" class="input-creature" value="6000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Quill.gif" alt="Quill" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Quill</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-quill" class="input-creature" value="20000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="vibrancy" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="vibrancy" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="vibrancy" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!--  HABILIDADES & UTILIDADES                           -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <h2 class="section-group-heading"><span>📈 Habilidades &amp; Utilidades</span></h2>
+            <section class="imbuements-grid">
+
+                <!-- Epiphany -->
+                <article class="imbu-card skill-theme" id="card-epiphany">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Epiphany_(Skillboost_de_Nível_Mágico).gif" alt="Epiphany" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Epiphany</h2><span>Magic Level (Magia)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Elvish_Talisman.gif" alt="Elvish Talisman" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Elvish Talisman</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-elvish_talisman" class="input-creature" value="800" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Broken_Shamanic_Staff.gif" alt="Broken Shamanic Staff" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Broken Shamanic Staff</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-broken_shamanic_staff" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Strand_of_Medusa_Hair.gif" alt="Strand of Medusa Hair" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Strand of Medusa Hair</span><span class="creature-qty">15x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-strand_of_medusa_hair" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="epiphany" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="epiphany" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="epiphany" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Slash -->
+                <article class="imbu-card skill-theme" id="card-slash">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Slash_(Skillboost_de_Espada).gif" alt="Slash" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Slash</h2><span>Sword Fighting (Espadas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Lion's_Mane.gif" alt="Lion's Mane" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Lion's Mane</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-lions_mane" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Mooh'tah_Shell.gif" alt="Mooh'tah Shell" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Mooh'tah Shell</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-moohtah_shell" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/War_Crystal.gif" alt="War Crystal" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">War Crystal</span><span class="creature-qty">5x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-war_crystal" class="input-creature" value="15000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="slash" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="slash" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="slash" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Chop -->
+                <article class="imbu-card skill-theme" id="card-chop">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Chop_(Skillboost_de_Machado).gif" alt="Chop" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Chop</h2><span>Axe Fighting (Machados)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Orc_Tooth.gif" alt="Orc Tooth" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Orc Tooth</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-orc_tooth" class="input-creature" value="1500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Battle_Stone.gif" alt="Battle Stone" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Battle Stone</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-battle_stone" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Moohtant_Horn.gif" alt="Moohtant Horn" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Moohtant Horn</span><span class="creature-qty">20x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-moohtant_horn" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="chop" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="chop" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="chop" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Bash -->
+                <article class="imbu-card skill-theme" id="card-bash">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Bash_(Skillboost_de_Clava).gif" alt="Bash" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Bash</h2><span>Club Fighting (Clavas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Cyclops_Toe.gif" alt="Cyclops Toe" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Cyclops Toe</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-cyclops_toe" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Ogre_Nose_Ring.gif" alt="Ogre Nose Ring" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Ogre Nose Ring</span><span class="creature-qty">15x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-ogre_nose_ring" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Warmaster's_Wristguards.gif" alt="Warmaster's Wristguards" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Warmaster's Wristguards</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-warmasters_wristguards" class="input-creature" value="10000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="bash" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="bash" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="bash" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Precision -->
+                <article class="imbu-card skill-theme" id="card-precision">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Precision_(Skillboost_de_Distância).gif" alt="Precision" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Precision</h2><span>Distance Fighting (Arco)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Elven_Scouting_Glass.gif" alt="Elven Scouting Glass" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Elven Scouting Glass</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-elven_scouting_glass" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Elven_Hoof.gif" alt="Elven Hoof" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Elven Hoof</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-elven_hoof" class="input-creature" value="3500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Metal_Spike.gif" alt="Metal Spike" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Metal Spike</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-metal_spike" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="precision" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="precision" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="precision" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Blockade -->
+                <article class="imbu-card skill-theme" id="card-blockade">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Blockade_(Skillboost_de_Escudo).gif" alt="Blockade" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Blockade</h2><span>Shielding (Escudos)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Piece_of_Scarab_Shell.gif" alt="Piece of Scarab Shell" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Piece of Scarab Shell</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-piece_of_scarab_shell" class="input-creature" value="1500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Brimstone_Shell.gif" alt="Brimstone Shell" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Brimstone Shell</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-brimstone_shell" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Frazzle_Skin.gif" alt="Frazzle Skin" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Frazzle Skin</span><span class="creature-qty">25x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-frazzle_skin" class="input-creature" value="4000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="blockade" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="blockade" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="blockade" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Featherweight -->
+                <article class="imbu-card prot-theme" id="card-featherweight">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Featherweight_(Aumento_de_Capacidade).gif" alt="Featherweight" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Featherweight</h2><span>Cap. de Carga (Armaduras)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Deepling_Warts.gif" alt="Deepling Wart" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Deepling Wart</span><span class="creature-qty">25x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-deepling_wart2" class="input-creature" value="6000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Fairy_Wings.gif" alt="Demon Dust" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Demon Dust</span><span class="creature-qty">25x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-demon_dust" class="input-creature" value="8000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Flask_of_Embalming_Fluid.gif" alt="Flask of Embalming Fluid" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Flask of Embalming Fluid</span><span class="creature-qty">15x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-flask_of_embalming_fluid2" class="input-creature" value="2000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="featherweight" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="featherweight" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="featherweight" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+                <!-- Swiftness -->
+                <article class="imbu-card prot-theme" id="card-swiftness">
+                    <div class="imbu-header">
+                        <div class="imbu-icon"><img src="imagens/Swiftness_(Skillboost_de_Velocidade).gif" alt="Swiftness" class="pixel-icon"></div>
+                        <div class="imbu-info"><h2>Swiftness</h2><span>Velocidade (Botas)</span></div>
+                    </div>
+                    <div class="imbu-body">
+                        <h3 class="section-title">Preço dos Itens no Market</h3>
+                        <div class="creatures-list">
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Goosebump_Leather.gif" alt="Guardian Tassels" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Guardian Tassels</span><span class="creature-qty">20x (Basic)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-guardian_tassels" class="input-creature" value="3000" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Wyvern_Talisman.gif" alt="Wyvern Talisman" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Wyvern Talisman</span><span class="creature-qty">20x (Intricate+)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-wyvern_talisman2" class="input-creature" value="2500" min="0"></div>
+                            </div>
+                            <div class="creature-row">
+                                <div class="creature-avatar"><img src="imagens/Gold-Brocaded_Cloth.gif" alt="Red Piece of Cloth" class="pixel-item"></div>
+                                <div class="creature-meta"><span class="creature-name">Red Piece of Cloth</span><span class="creature-qty">10x (Powerful)</span></div>
+                                <div class="creature-input-wrapper"><span>GP</span><input type="number" id="input-red_piece_of_cloth" class="input-creature" value="5000" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imbu-results">
+                        <div class="tier-selector">
+                            <button class="tier-btn" data-imbu="swiftness" data-tier="basic">Basic</button>
+                            <button class="tier-btn" data-imbu="swiftness" data-tier="intricate">Intricate</button>
+                            <button class="tier-btn active" data-imbu="swiftness" data-tier="powerful">Powerful</button>
+                        </div>
+                        <div class="options-list"></div>
+                        <div class="savings-container" style="margin-top:14px;"></div>
+                    </div>
+                </article>
+
+            </section>
+
+         </main>
+    </div>
+    </div> <!-- FIM DA ABA 1 -->
+
+    <!-- ABA 2: DIVISOR DE LOOT DA PARTY -->
+    <div id="tab-loot" class="tab-content">
+        <div class="container">
+            <div class="loot-splitter-layout">
+                
+                <!-- Coluna da Esquerda: Entrada de Dados e Histórico -->
+                <div class="loot-sidebar">
+                    <section class="loot-card">
+                        <h2 class="card-heading">📋 Log da Hunt (Party Hunt Analyser)</h2>
+                        <p class="card-sub">Cole os dados do Analisador de Hunt do Tibia aqui:</p>
+                        
+                        <textarea id="loot-log-input" class="loot-textarea" placeholder="Cole o log da hunt aqui...
+Exemplo:
+Session data: From 2026-07-17, 18:00 to 2026-07-17, 20:00
+Loot: 1,500,000
+Supplies: 300,000
+Balance: 1,200,000
+Player1:
+    Loot: 1,000,000
+    Supplies: 100,000
+Player2:
+    Loot: 500,000
+    Supplies: 200,000"></textarea>
+                        
+                        <div class="loot-actions">
+                            <button id="btn-calculate-loot" class="btn-primary-glow">Calcular Split</button>
+                            <button id="btn-clear-loot" class="btn-secondary-glow">Limpar</button>
+                        </div>
+                    </section>
+
+                    <!-- Histórico de Hunts -->
+                    <section class="loot-card history-section">
+                        <div class="history-header">
+                            <h2 class="card-heading">⏳ Histórico de Hunts</h2>
+                            <button id="btn-clear-history" class="btn-danger-text">Limpar Histórico</button>
+                        </div>
+                        <div id="hunt-history-list" class="history-list">
+                            <p class="empty-history-text">Nenhuma hunt salva ainda.</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Coluna da Direita: Resultados e Painel Detalhado -->
+                <div class="loot-main">
+                    <!-- Resumo Geral (Cards de Lucro/Prejuízo) -->
+                    <div class="loot-summary-grid">
+                        <div class="summary-stat loot-total">
+                            <span class="stat-label">Loot Total</span>
+                            <span id="stat-total-loot" class="stat-value">0 gp</span>
+                        </div>
+                        <div class="summary-stat supplies-total">
+                            <span class="stat-label">Waste Total (Supplies)</span>
+                            <span id="stat-total-supplies" class="stat-value text-red">0 gp</span>
+                        </div>
+                        <div class="summary-stat balance-total">
+                            <span class="stat-label">Balanço Geral</span>
+                            <span id="stat-total-balance" class="stat-value">0 gp</span>
+                        </div>
+                        <div class="summary-stat share-total">
+                            <span class="stat-label">Lucro por Jogador</span>
+                            <span id="stat-player-share" class="stat-value text-green">0 gp</span>
+                        </div>
+                    </div>
+
+                    <!-- Divisão das Transferências Bancárias -->
+                    <section class="loot-card results-card" id="loot-results-panel" style="display: none;">
+                        <h2 class="card-heading">💸 Transferências Bancárias Necessárias</h2>
+                        <p class="card-sub">Copie os comandos bancários abaixo para transferir no jogo:</p>
+                        
+                        <!-- Resumo Textual do Split (Lucro, Tempo e Dano) -->
+                        <div id="loot-analysis-summary" class="loot-analysis-summary">
+                            <!-- Injetado via JS -->
+                        </div>
+                        
+                        <div id="bank-commands-container" class="bank-commands-list">
+                            <!-- Injetado via JS -->
+                        </div>
+                    </section>
+
+                    <!-- Lista Detalhada de Jogadores -->
+                    <section class="loot-card results-card" id="loot-details-panel" style="display: none;">
+                        <h2 class="card-heading">👥 Detalhamento por Jogador</h2>
+                        
+                        <div class="table-responsive">
+                            <table class="players-table">
+                                <thead>
+                                    <tr>
+                                        <th>Jogador</th>
+                                        <th>Loot Coletado</th>
+                                        <th>Waste (Supplies)</th>
+                                        <th>Balanço</th>
+                                        <th>Resultado / Share</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="players-table-body">
+                                    <!-- Injetado via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Banner Informativo Inicial -->
+                    <div class="loot-info-banner" id="loot-initial-banner">
+                        <img src="imagens/Compass.gif" alt="Bússola" class="pixel-item">
+                        <h3>Pronto para o cálculo!</h3>
+                        <p>Cole o log do analisador da hunt à esquerda e clique em <strong>Calcular Split</strong> para ver os resultados e o histórico.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> <!-- FIM DA ABA 2 -->
+
+
+    <!-- Footer -->
+
+
+    <footer>
+        <div class="container">
+            <p>Desenvolvido com carinho para a comunidade tibiana. Os preços de itens mudam de servidor para servidor.</p>
+            <p style="margin-top:5px; font-size:0.85rem;">Esta página foi criada por <a href="https://www.twitch.tv/andychrono" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700; text-decoration:underline;">Andy Chrono</a>.</p>
+            <p style="margin-top:5px;">Tibia é uma marca registrada da <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Toast de salvamento -->
+    <div id="save-toast" class="save-toast">
+        <span class="save-toast-icon">💾</span>
+        <span>Preços salvos!</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
