@@ -1,7 +1,7 @@
 // ============================================================
 // TIBIA BOSS TRACKER & CHECKER — DADOS REAIS & POR SERVIDOR
 // Foco Principal: USTEBRA (dados oficiais sincronizados)
-// Suporte completo a todos os mundos do Tibia com cálculo dinâmico
+// Suporte completo a sistema de Kills: Mortos Hoje e Mortos Ontem
 // ============================================================
 
 // Base mestra de Bosses com nomes oficiais corrigidos, imagens e metadados
@@ -16,7 +16,6 @@ const MASTER_BOSSES = [
         location: "Hellgate (Vampire Crypt), Ab'Dendriel",
         intervalMin: 6, intervalMax: 12,
         drops: "Vampire Lord Token, Vampire Shield, Strange Helmet",
-        notes: "Acesso por Hellgate. Imunidade a Death e Earth. Forte contra dano físico.",
         difficulty: "Médio",
         ustebra: { chance: 22, status: "high", lastSeenDays: 8, prediction: "Hoje (Janela Aberta)" }
     },
@@ -29,7 +28,6 @@ const MASTER_BOSSES = [
         location: "Vampire Crypt, Nargor",
         intervalMin: 6, intervalMax: 12,
         drops: "Vampire Lord Token, Vampire Silk, Skull Helmet",
-        notes: "Necessário acesso a Nargor (The Shattered Isles Quest).",
         difficulty: "Médio",
         ustebra: { chance: 9, status: "high", lastSeenDays: 10, prediction: "Hoje (Janela Aberta)" }
     },
@@ -42,9 +40,8 @@ const MASTER_BOSSES = [
         location: "Drefia (Vampire Crypt), Darashia",
         intervalMin: 6, intervalMax: 12,
         drops: "Vampire Lord Token, Skull Helmet, Vampire Shield",
-        notes: "Localizado no andar mais profundo das tumbas de vampiros em Drefia.",
         difficulty: "Médio",
-        ustebra: { chance: 1, status: "low", lastSeenDays: 1, prediction: "Próximo em 5 dias" }
+        ustebra: { chance: 1, status: "low", lastSeenDays: 1, prediction: "Morto Ontem (Próximo em 5 dias)", defaultKilledYesterday: true }
     },
     {
         id: "sir_valorcrest",
@@ -55,7 +52,6 @@ const MASTER_BOSSES = [
         location: "Vampire Crypt, Mount Sternum",
         intervalMin: 6, intervalMax: 12,
         drops: "Vampire Lord Token, Bonebreaker, Black Pearl",
-        notes: "Fica nas profundezas de Mount Sternum (Thais). Fácil acesso.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 2 dias" }
     },
@@ -68,7 +64,6 @@ const MASTER_BOSSES = [
         location: "Drefia (Vampire Area), Darashia",
         intervalMin: 15, intervalMax: 30,
         drops: "Vampire's Crest, Sun Mirror, Batwing Hat",
-        notes: "Anuncia 'The night is darker than usual...'. Boss fortíssimo com minions Nightfiend.",
         difficulty: "Muito Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 9, prediction: "Próximo em 8 dias" }
     },
@@ -83,7 +78,6 @@ const MASTER_BOSSES = [
         location: "Lich Hell, Ramoa (Goroma)",
         intervalMin: 2, intervalMax: 4,
         drops: "Maxilla Maximus (Domar), Hardened Bone",
-        notes: "Nasce em até 3 ondas espaçadas por 1 hora. Domável com Maxilla Maximus.",
         difficulty: "Médio",
         ustebra: { chance: 15, status: "high", lastSeenDays: 2, prediction: "Hoje (Janela Aberta)" }
     },
@@ -96,7 +90,6 @@ const MASTER_BOSSES = [
         location: "Selvas de Tiquanda (Port Hope)",
         intervalMin: 2, intervalMax: 4,
         drops: "Panther Paw, Panther Head (Domar)",
-        notes: "Possui 3 pontos de spawn na selva de Port Hope. Fica invisível ao atacar.",
         difficulty: "Médio",
         ustebra: { chance: 14, status: "high", lastSeenDays: 3, prediction: "Hoje (Janela Aberta)" }
     },
@@ -109,9 +102,8 @@ const MASTER_BOSSES = [
         location: "Treasure Island / Calassa / Seacrest Grounds",
         intervalMin: 2, intervalMax: 5,
         drops: "Giant Shrimp (Domar), Crustacea Shell",
-        notes: "Domável com Giant Shrimp. Pode nascer em Treasure Island (buraco) ou Calassa.",
         difficulty: "Médio",
-        ustebra: { chance: 2, status: "low", lastSeenDays: 1, prediction: "Próximo em 1 dia" }
+        ustebra: { chance: 2, status: "low", lastSeenDays: 1, prediction: "Morto Ontem (Próximo em 1 dia)", defaultKilledYesterday: true }
     },
     {
         id: "draptor",
@@ -122,7 +114,6 @@ const MASTER_BOSSES = [
         location: "Razachai / Dragonblaze Peaks / Muggy Plains",
         intervalMin: 3, intervalMax: 7,
         drops: "Harness (Domar), Draptor Scales",
-        notes: "Pode nascer como spawn raro no topo de WOTM ou em raid em Zao.",
         difficulty: "Difícil",
         ustebra: { chance: 6, status: "medium", lastSeenDays: 4, prediction: "Hoje (Janela Aberta)" }
     },
@@ -137,7 +128,6 @@ const MASTER_BOSSES = [
         location: "Bueiro de Rookgaard (Rat Dungeon)",
         intervalMin: 1, intervalMax: 3,
         drops: "Dice, Cheese, Gold Coins",
-        notes: "O único portador do lendário Dice em Rookgaard!",
         difficulty: "Fácil",
         ustebra: { chance: 13, status: "high", lastSeenDays: 1, prediction: "Hoje (Janela Aberta)" }
     },
@@ -150,7 +140,6 @@ const MASTER_BOSSES = [
         location: "Minotaur Hell, Rookgaard",
         intervalMin: 2, intervalMax: 5,
         drops: "Magic Light Wand, Minotaur Leather",
-        notes: "Spawn no fundo da caverna de Minotaurs de Rookgaard.",
         difficulty: "Fácil",
         ustebra: { chance: 8, status: "medium", lastSeenDays: 2, prediction: "Hoje (Janela Aberta)" }
     },
@@ -163,7 +152,6 @@ const MASTER_BOSSES = [
         location: "Rookgaard Cemetery / Ghost Area",
         intervalMin: 2, intervalMax: 4,
         drops: "Bone, Skull",
-        notes: "Boss skeleton misterioso que ataca novatos em Rookgaard.",
         difficulty: "Fácil",
         ustebra: { chance: 2, status: "low", lastSeenDays: 11, prediction: "Próximo em 2 dias" }
     },
@@ -176,7 +164,6 @@ const MASTER_BOSSES = [
         location: "Katana Quest Caves, Rookgaard",
         intervalMin: 1, intervalMax: 3,
         drops: "Meat, Gold Coins, Ham",
-        notes: "Rotworm gigante no caminho da Katana em Rookgaard.",
         difficulty: "Fácil",
         ustebra: { chance: 1, status: "low", lastSeenDays: 15, prediction: "Próximo em 1 dia" }
     },
@@ -191,7 +178,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Defiler Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "The Plasmother's Remains, Springsprout Rod, Poison Dagger",
-        notes: "Paralisa fortemente e causa poison massivo. Traga Cure Poison.",
         difficulty: "Difícil",
         ustebra: { chance: 11, status: "high", lastSeenDays: 20, prediction: "Hoje (Janela Aberta)" }
     },
@@ -204,7 +190,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Hand of Cursed Fate Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "The Handmaiden's Protector, Bast Blade, Castle Shield",
-        notes: "Invoca Hands of Cursed Fate. Dano de Death pesado.",
         difficulty: "Difícil",
         ustebra: { chance: 10, status: "high", lastSeenDays: 15, prediction: "Hoje (Janela Aberta)" }
     },
@@ -217,7 +202,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Juggernaut Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "Piece of Massacre's Shell, Great Axe, Heavy Mace",
-        notes: "Juggernaut colossal no trono de PoI. Ataque físico devastador.",
         difficulty: "Difícil",
         ustebra: { chance: 6, status: "medium", lastSeenDays: 14, prediction: "Hoje (Janela Aberta)" }
     },
@@ -230,7 +214,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Diabolic Imp Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "The Imperor's Trident, Tempest Rod, Fire Axe",
-        notes: "Teletransporta e corre rapidamente. Cuidado com armadilhas de fogo.",
         difficulty: "Médio",
         ustebra: { chance: 5, status: "medium", lastSeenDays: 21, prediction: "Hoje (Janela Aberta)" }
     },
@@ -243,7 +226,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Phantasm Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "Countess Sorrow's Frozen Tear, Silver Brooch, Ring of the Sky",
-        notes: "Causa alucinações e mana drain severo. Combate com dano físico e Holy.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 13, prediction: "Próximo em 1 dia" }
     },
@@ -256,7 +238,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Undead Dragon Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "Dracola's Eye, Dragon Scale Boots, Reaper's Axe",
-        notes: "Dragão morto-vivo ancestral com forte wave de Life Drain.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 5, prediction: "Próximo em 9 dias" }
     },
@@ -269,7 +250,6 @@ const MASTER_BOSSES = [
         location: "Pits of Inferno (Dark Torturer Seal)",
         intervalMin: 8, intervalMax: 16,
         drops: "Mr. Punish's Handcuffs, Butcher's Axe, Dreaded Cleaver",
-        notes: "Dark Torturer gigante com alta velocidade e dano de corte.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 4, prediction: "Próximo em 10 dias" }
     },
@@ -282,7 +262,6 @@ const MASTER_BOSSES = [
         location: "The Vats (The Inquisition Quest)",
         intervalMin: 10, intervalMax: 20,
         drops: "Hellhound Slobber, Fire Axe, Magma Coat",
-        notes: "Criatura da inquisição com forte ataque elemental de fogo.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 5, prediction: "Próximo em 8 dias" }
     },
@@ -297,7 +276,6 @@ const MASTER_BOSSES = [
         location: "Green Claw Swamp, Venore",
         intervalMin: 4, intervalMax: 8,
         drops: "Ribbit / Frog Cloak, Slime",
-        notes: "Sapo mágico raro que se esconde na vegetação densa.",
         difficulty: "Fácil",
         ustebra: { chance: 13, status: "high", lastSeenDays: 14, prediction: "Hoje (Janela Aberta)" }
     },
@@ -310,7 +288,6 @@ const MASTER_BOSSES = [
         location: "Cavernas de Fíbula / Pântano",
         intervalMin: 6, intervalMax: 12,
         drops: "Wooden Whistle, Fern, Ring of Healing",
-        notes: "Invoca War Wolves. Muito procurado pelo lendário Wooden Whistle!",
         difficulty: "Fácil",
         ustebra: { chance: 10, status: "high", lastSeenDays: 21, prediction: "Hoje (Janela Aberta)" }
     },
@@ -323,7 +300,6 @@ const MASTER_BOSSES = [
         location: "Forbidden Temple, Tiquanda",
         intervalMin: 12, intervalMax: 24,
         drops: "Small Diamond, Dazzling Robe",
-        notes: "Mago ancestral protegido por armadilhas.",
         difficulty: "Médio",
         ustebra: { chance: 9, status: "high", lastSeenDays: 21, prediction: "Hoje (Janela Aberta)" }
     },
@@ -336,7 +312,6 @@ const MASTER_BOSSES = [
         location: "Hellgate (Beholder Chamber)",
         intervalMin: 5, intervalMax: 10,
         drops: "Eye of the Evil, Bonelord Helmet, Terra Rod",
-        notes: "Elder Bonelord ancestral no coração de Hellgate.",
         difficulty: "Fácil",
         ustebra: { chance: 9, status: "high", lastSeenDays: 6, prediction: "Hoje (Janela Aberta)" }
     },
@@ -349,7 +324,6 @@ const MASTER_BOSSES = [
         location: "Muggy Plains (Zao Gate)",
         intervalMin: 12, intervalMax: 24,
         drops: "Dragon Scale Boots, Zulazza's Head, Earthborn Titan Armor",
-        notes: "Chefe supremo das invasões de Zao. Anuncia 'Zulazza is marching!'.",
         difficulty: "Muito Difícil",
         ustebra: { chance: 7, status: "medium", lastSeenDays: 18, prediction: "Hoje (Janela Aberta)" }
     },
@@ -362,7 +336,6 @@ const MASTER_BOSSES = [
         location: "Edron Troll Caves",
         intervalMin: 3, intervalMax: 6,
         drops: "Wooden Shield, Leather Armor, Troll Root",
-        notes: "Troll gigante que comanda as colônias de Edron.",
         difficulty: "Fácil",
         ustebra: { chance: 7, status: "medium", lastSeenDays: 3, prediction: "Hoje (Janela Aberta)" }
     },
@@ -375,7 +348,6 @@ const MASTER_BOSSES = [
         location: "Smuggler Cave, Bandits Den (Carlin / Port Hope)",
         intervalMin: 4, intervalMax: 8,
         drops: "Silver Brooch, Golden Mug, Gold Coins",
-        notes: "Líder dos contrabandistas em cavernas costeiras.",
         difficulty: "Fácil",
         ustebra: { chance: 5, status: "medium", lastSeenDays: 8, prediction: "Hoje (Janela Aberta)" }
     },
@@ -388,7 +360,6 @@ const MASTER_BOSSES = [
         location: "Muggy Plains / Zao Steppes",
         intervalMin: 5, intervalMax: 10,
         drops: "Dreadmaw Scale, Giant Shimmering Pearl",
-        notes: "Devorador subterrâneo de Zao.",
         difficulty: "Médio",
         ustebra: { chance: 5, status: "medium", lastSeenDays: 12, prediction: "Hoje (Janela Aberta)" }
     },
@@ -401,7 +372,6 @@ const MASTER_BOSSES = [
         location: "Banuta (Ape City), Port Hope",
         intervalMin: 5, intervalMax: 10,
         drops: "Banana Staff, Ape Fur",
-        notes: "Gorila gigante líder das tribos de Banuta.",
         difficulty: "Fácil",
         ustebra: { chance: 3, status: "medium", lastSeenDays: 16, prediction: "Hoje (Janela Aberta)" }
     },
@@ -416,7 +386,6 @@ const MASTER_BOSSES = [
         location: "Amazon Camp, Venore",
         intervalMin: 7, intervalMax: 14,
         drops: "Amazon Armor, Amazon Shield, Crystal Ball",
-        notes: "Comandante das Amazonas no acampamento ao norte de Venore.",
         difficulty: "Fácil",
         ustebra: { chance: 2, status: "low", lastSeenDays: 22, prediction: "Próximo em 1 dia" }
     },
@@ -429,9 +398,8 @@ const MASTER_BOSSES = [
         location: "Dark Cathedral, Plains of Havoc",
         intervalMin: 3, intervalMax: 6,
         drops: "Assassin Dagger, Dark Armor",
-        notes: "Líder dos assassinos no subsolo da Dark Cathedral.",
         difficulty: "Fácil",
-        ustebra: { chance: 1, status: "low", lastSeenDays: 1, prediction: "Próximo em 5 dias" }
+        ustebra: { chance: 1, status: "low", lastSeenDays: 1, prediction: "Morto Ontem (Próximo em 5 dias)", defaultKilledYesterday: true }
     },
     {
         id: "high_templar_cobrass",
@@ -442,7 +410,6 @@ const MASTER_BOSSES = [
         location: "Chor, Tiquanda",
         intervalMin: 5, intervalMax: 10,
         drops: "Snake Sword, Lizard Scale, Small Emerald",
-        notes: "Sacerdote das cobras na vila ancestral de Chor.",
         difficulty: "Fácil",
         ustebra: { chance: 1, status: "low", lastSeenDays: 18, prediction: "Próximo em 4 dias" }
     },
@@ -455,7 +422,6 @@ const MASTER_BOSSES = [
         location: "Green Claw Swamp (Witch Hill), Venore",
         intervalMin: 4, intervalMax: 8,
         drops: "Cape, Star Amulet, Witch Broom",
-        notes: "Bruxa ancestral do pântano de Venore.",
         difficulty: "Fácil",
         ustebra: { chance: 1, status: "low", lastSeenDays: 4, prediction: "Próximo em 1 dia" }
     },
@@ -468,7 +434,6 @@ const MASTER_BOSSES = [
         location: "Dwarf Mines, Kazordoon",
         intervalMin: 4, intervalMax: 8,
         drops: "Dwarven Axe, Miner's Helmet",
-        notes: "Capataz anão renegado nas minas de Kazordoon.",
         difficulty: "Fácil",
         ustebra: { chance: 1, status: "low", lastSeenDays: 27, prediction: "Próximo em 1 dia" }
     },
@@ -481,7 +446,6 @@ const MASTER_BOSSES = [
         location: "Folda (Topo das Montanhas de Gelo)",
         intervalMin: 15, intervalMax: 30,
         drops: "Bunnyslippers, Yeti Fur, Snowball",
-        notes: "Lendário Yeti de Folda. Pode nascer em bando de até 3 unidades.",
         difficulty: "Médio",
         ustebra: { chance: 1, status: "low", lastSeenDays: 17, prediction: "Próximo em 2 dias" }
     },
@@ -494,7 +458,6 @@ const MASTER_BOSSES = [
         location: "Shadowthorn, Venore",
         intervalMin: 6, intervalMax: 12,
         drops: "Cornucopia, Elven Brooch, Demonbone Amulet",
-        notes: "Nasce no templo de Shadowthorn. Ataca com runas mágicas e invoca elfos.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 3 dias" }
     },
@@ -507,7 +470,6 @@ const MASTER_BOSSES = [
         location: "Mintwallin, Thais Tunnels",
         intervalMin: 4, intervalMax: 8,
         drops: "Dwarven Ring, Brass Armor, Heavy Machete",
-        notes: "Comanda o exército de minotauros na cidade subterrânea de Mintwallin.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 3 dias" }
     },
@@ -520,7 +482,6 @@ const MASTER_BOSSES = [
         location: "Caverna Oculta de Svargrond",
         intervalMin: 14, intervalMax: 30,
         drops: "Fur Cap, Bear Paw, Wolf Trophy",
-        notes: "Misterioso ermitão que vive isolado no gelo. Dropa o cobiçado Fur Cap!",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 5, prediction: "Próximo em 7 dias" }
     },
@@ -533,7 +494,6 @@ const MASTER_BOSSES = [
         location: "Geleiras de Nibelor, Svargrond",
         intervalMin: 14, intervalMax: 28,
         drops: "Eye of the Storm, Shiver Arrow, Silver Brooch",
-        notes: "Requer The Ice Islands Quest para chegar na ilha de Nibelor.",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 10, prediction: "Próximo em 6 dias" }
     },
@@ -546,7 +506,6 @@ const MASTER_BOSSES = [
         location: "Hydra Mountain, Tiquanda",
         intervalMin: 14, intervalMax: 28,
         drops: "Triple Headed Serpent Shield, Welter's Egg",
-        notes: "Choca ovos durante a luta. Destrua os ovos rapidamente!",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 9, prediction: "Próximo em 8 dias" }
     },
@@ -559,7 +518,6 @@ const MASTER_BOSSES = [
         location: "Terra Tunnels (Edron / Kazordoon)",
         intervalMin: 12, intervalMax: 24,
         drops: "Glass of Goo, Gooey Mass, Slime Heart",
-        notes: "Lodo tóxico gigante com alta resistência a dano físico.",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 7, prediction: "Próximo em 7 dias" }
     },
@@ -572,7 +530,6 @@ const MASTER_BOSSES = [
         location: "Ice Witch Temple, Svargrond",
         intervalMin: 14, intervalMax: 28,
         drops: "Icy Culm, Glacier Shoes, Snowman Package",
-        notes: "Bruxa de gelo poderosa com beams congelantes em linha reta.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 4, prediction: "Próximo em 12 dias" }
     },
@@ -585,7 +542,6 @@ const MASTER_BOSSES = [
         location: "Edron Rotworm Caves / Liberty Bay / Darashia",
         intervalMin: 6, intervalMax: 12,
         drops: "Albino Plate, White Pearl, Meat",
-        notes: "Pode nascer em uma de três cavernas de Rotworm no Tibia.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 2, prediction: "Próximo em 4 dias" }
     },
@@ -598,7 +554,6 @@ const MASTER_BOSSES = [
         location: "Fury Gate, Thais / Darashia",
         intervalMin: 14, intervalMax: 28,
         drops: "Furious Frock, Red Gem, Pure Energy",
-        notes: "Aparece quando a Fury Gate está aberta. Dano massivo de Death e Fire.",
         difficulty: "Muito Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 6, prediction: "Próximo em 8 dias" }
     },
@@ -611,7 +566,6 @@ const MASTER_BOSSES = [
         location: "Formorgar Mines / Mammoth Lair",
         intervalMin: 12, intervalMax: 24,
         drops: "The Chilling Horn, Mammoth Tusk",
-        notes: "Mammoth colossal no topo congelado de Svargrond.",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 5, prediction: "Próximo em 7 dias" }
     },
@@ -624,7 +578,6 @@ const MASTER_BOSSES = [
         location: "Formorgar Glacier (Ice Shrine)",
         intervalMin: 2, intervalMax: 5,
         drops: "Yakchal's Ice Bag, Glacier Mask, Frozen Starlight",
-        notes: "Invocada quebrando o gelo no santuário com a Music Box especial.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 2, prediction: "Próximo em 1 dia" }
     },
@@ -637,9 +590,8 @@ const MASTER_BOSSES = [
         location: "Ilhas de Svargrond / Chyllfroest",
         intervalMin: 3, intervalMax: 6,
         drops: "Fish, White Pearl, Snowball",
-        notes: "Pinguim gigante hostil que surge inesperadamente na neve.",
         difficulty: "Fácil",
-        ustebra: { chance: 0, status: "blocked", lastSeenDays: 1, prediction: "Próximo em 2 dias" }
+        ustebra: { chance: 0, status: "blocked", lastSeenDays: 1, prediction: "Morto Ontem (Próximo em 2 dias)", defaultKilledYesterday: true }
     },
     {
         id: "groam",
@@ -650,7 +602,6 @@ const MASTER_BOSSES = [
         location: "Subsolo de Kazordoon (Mines)",
         intervalMin: 4, intervalMax: 8,
         drops: "Dwarven Axe, Dwarven Ring, Iron Ore",
-        notes: "Guerreiro anão renegado nos trilhos mais fundos de Kazordoon.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 2, prediction: "Próximo em 2 dias" }
     },
@@ -663,7 +614,6 @@ const MASTER_BOSSES = [
         location: "Ghostship / Darashia",
         intervalMin: 5, intervalMax: 10,
         drops: "Pirate Hat, Sabre, Gold Coins",
-        notes: "Capitão fantasma vingativo.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 4, prediction: "Próximo em 6 dias" }
     },
@@ -676,7 +626,6 @@ const MASTER_BOSSES = [
         location: "Drefia (Tomb Grounds)",
         intervalMin: 6, intervalMax: 12,
         drops: "Skull Staff, Bone Shield",
-        notes: "Necromante ancestral de Drefia.",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 5 dias" }
     },
@@ -689,7 +638,6 @@ const MASTER_BOSSES = [
         location: "Edron Woods / Cormaya",
         intervalMin: 3, intervalMax: 6,
         drops: "Wolf Fur, Meat",
-        notes: "Lobo colossal de Edron.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 6, prediction: "Próximo em 4 dias" }
     },
@@ -702,7 +650,6 @@ const MASTER_BOSSES = [
         location: "Barbarian Camp, Svargrond",
         intervalMin: 4, intervalMax: 8,
         drops: "Brutetamer's Staff, Fur Boots",
-        notes: "Líder bárbara das montanhas gélidas.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 2, prediction: "Próximo em 6 dias" }
     },
@@ -715,7 +662,6 @@ const MASTER_BOSSES = [
         location: "Cult Caves, Liberty Bay",
         intervalMin: 5, intervalMax: 10,
         drops: "Cultish Robe, Star Amulet",
-        notes: "Sumo sacerdote dos cultos de Goroma e Liberty Bay.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 4, prediction: "Próximo em 5 dias" }
     },
@@ -728,7 +674,6 @@ const MASTER_BOSSES = [
         location: "Cyclopolis, Edron",
         intervalMin: 4, intervalMax: 8,
         drops: "Heavy Club, Cyclops Toe",
-        notes: "Ciclope ancião nas profundezas de Cyclopolis.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 4 dias" }
     },
@@ -741,7 +686,6 @@ const MASTER_BOSSES = [
         location: "Demona, Maze of Lost Souls",
         intervalMin: 6, intervalMax: 12,
         drops: "Blue Robe, Skull Staff, Talisman",
-        notes: "Lorde supremo dos Warlocks em Demona.",
         difficulty: "Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 2, prediction: "Próximo em 8 dias" }
     },
@@ -754,7 +698,6 @@ const MASTER_BOSSES = [
         location: "Orc Fortress, Ulderek's Rock",
         intervalMin: 4, intervalMax: 8,
         drops: "Orcish Axe, Knight Armor",
-        notes: "Senhor da guerra no coração da Fortaleza dos Orcs.",
         difficulty: "Fácil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 3, prediction: "Próximo em 6 dias" }
     },
@@ -767,7 +710,6 @@ const MASTER_BOSSES = [
         location: "Deep Rotworm Caves",
         intervalMin: 7, intervalMax: 14,
         drops: "Lump of Dirt, Rotworm Fangs, Pure Gold",
-        notes: "Devorador de túneis lendário com grande resistência.",
         difficulty: "Médio",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 4, prediction: "Próximo em 7 dias" }
     },
@@ -782,7 +724,6 @@ const MASTER_BOSSES = [
         location: "Ferumbras' Citadel (Kharos, Goroma)",
         intervalMin: 150, intervalMax: 180,
         drops: "Ferumbras' Hat, Great Axe, Tempest Rod, Spellbook of Dark Mysteries",
-        notes: "Raid anunciada no servidor com 3 avisos. Requer time bem organizado.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 141, prediction: "Próximo em 21 dias" }
     },
@@ -795,7 +736,6 @@ const MASTER_BOSSES = [
         location: "Roshamuul Prison Entrance",
         intervalMin: 14, intervalMax: 28,
         drops: "Umbral Master Weapons, Dream Warden Mask, Nightmare Horn",
-        notes: "Grita 'Gaz'haragoth will tear you apart!'. Exige dezenas de jogadores com blockers.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 57, prediction: "Próximo em 5 dias" }
     },
@@ -808,7 +748,6 @@ const MASTER_BOSSES = [
         location: "Formorgar Mines, Svargrond",
         intervalMin: 150, intervalMax: 180,
         drops: "Oceanborn Leviathan Armor, Havoc Blade, Ravenwing, Spellbook of Lost Souls",
-        notes: "Nasce no fundo das Formorgar Mines. Anúncio com tremores de terra.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 46, prediction: "Próximo em 116 dias" }
     },
@@ -821,7 +760,6 @@ const MASTER_BOSSES = [
         location: "Femur Hills (Noroeste de Kazordoon)",
         intervalMin: 150, intervalMax: 180,
         drops: "Thunder Hammer, Demon Horn, Teddy Bear, Magic Plate Armor",
-        notes: "Aparece em Femur Hills. Anúncio: 'Orshabaal's brains splattered...'",
         difficulty: "Muito Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 24, prediction: "Próximo em 136 dias" }
     },
@@ -834,7 +772,6 @@ const MASTER_BOSSES = [
         location: "Triangle of Terror (Goroma Volcano)",
         intervalMin: 150, intervalMax: 180,
         drops: "Great Shield, Chain Bolter, Molten Plate, The Stomper",
-        notes: "Nasce dentro do vulcão de Goroma com 3 avisos prévios.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 38, prediction: "Próximo em 130 dias" }
     },
@@ -847,7 +784,6 @@ const MASTER_BOSSES = [
         location: "Roshamuul Mountain Lair",
         intervalMin: 14, intervalMax: 30,
         drops: "Dream Warden Claw, Claws of Omrafir, Rare Gems",
-        notes: "Dragão colossal de Roshamuul imune a fogo e energia.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 8, prediction: "Próximo em 7 dias" }
     },
@@ -860,7 +796,6 @@ const MASTER_BOSSES = [
         location: "Abomination Lair, Thais Tunnels",
         intervalMin: 14, intervalMax: 28,
         drops: "Mutated Flesh, Gold Token, Silver Token",
-        notes: "Requer ativação mecânica e cooperação de vários jogadores.",
         difficulty: "Muito Difícil",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 12, prediction: "Próximo em 8 dias" }
     },
@@ -873,7 +808,6 @@ const MASTER_BOSSES = [
         location: "Femur Hills / Plains of Havoc",
         intervalMin: 150, intervalMax: 200,
         drops: "Thunder Hammer, Morshabaal's Mask, Bispo de Prata",
-        notes: "Versão aprimorada e letal de Orshabaal com dano massivo.",
         difficulty: "Extremo",
         ustebra: { chance: 0, status: "blocked", lastSeenDays: 62, prediction: "Próximo em 120 dias" }
     }
@@ -917,25 +851,30 @@ const TIBIA_WORLDS = [
 let bossTrackerState = {
     selectedWorld: "Ustebra",
     searchQuery: "",
-    statusFilter: "all",           // 'all', 'high', 'medium', 'low', 'blocked', 'checked', 'unchecked'
+    statusFilter: "all",           // 'all', 'high', 'medium', 'low', 'killed_today', 'killed_yesterday', 'blocked', 'checked', 'unchecked'
     categoryFilter: "all",         // 'all', 'vampire', 'mount', 'archdemon', 'poi_inq', 'nemesis', 'mini', 'rookgaard'
     sortBy: "chance_desc",         // 'chance_desc', 'chance_asc', 'name_asc', 'last_seen_desc'
     hideBlockedBosses: true,       // Por padrão esconde bosses com 0% (sem chance hoje) para focar na ronda
-    checkedBosses: {}              // Carregado por servidor
+    checkedBosses: {},             // { bossId: { time: "14:30", date: "29/08/2026", timestamp: 12345 } }
+    killedBosses: {}               // { bossId: { time: "10:55", date: "29/08/2026", timestamp: 12345, dayOffset: 0 } }
 };
 
-const BOSS_STORAGE_PREFIX = "tibia_boss_checks_v3_";
+const BOSS_STORAGE_PREFIX = "tibia_boss_checks_v4_";
+const BOSS_KILLS_PREFIX = "tibia_boss_kills_v4_";
 
 // Algoritmo determinístico para calcular dados realistas por servidor
 function getWorldBossData(boss, worldName) {
+    const isUstebra = worldName.toLowerCase() === "ustebra";
+
     // Se for Ustebra, usa os dados reais sincronizados do Tibia-Statistic
-    if (worldName.toLowerCase() === "ustebra" && boss.ustebra) {
+    if (isUstebra && boss.ustebra) {
         return {
             ...boss,
             chancePercent: boss.ustebra.chance,
             status: boss.ustebra.status,
             lastSeenDays: boss.ustebra.lastSeenDays,
-            prediction: boss.ustebra.prediction
+            prediction: boss.ustebra.prediction,
+            defaultKilledYesterday: !!boss.ustebra.defaultKilledYesterday
         };
     }
 
@@ -948,10 +887,9 @@ function getWorldBossData(boss, worldName) {
     const seed = Math.abs(hash);
 
     const isArchdemon = boss.category === "archdemon";
-    let lastSeenDays, chancePercent, status, prediction;
+    let lastSeenDays, chancePercent, status, prediction, defaultKilledYesterday = false;
 
     if (isArchdemon) {
-        // Archdemons têm janelas longas (150+ dias)
         const daysSince = 20 + (seed % 170);
         lastSeenDays = daysSince;
         if (daysSince >= boss.intervalMin) {
@@ -965,11 +903,15 @@ function getWorldBossData(boss, worldName) {
             prediction = `Próximo em ${daysLeft} dias`;
         }
     } else {
-        // Bosses normais (intervalos de 2 a 30 dias)
         const range = boss.intervalMax + 4;
         lastSeenDays = (seed % range) + 1;
 
-        if (lastSeenDays >= boss.intervalMin) {
+        if (lastSeenDays === 1 && (seed % 4 === 0)) {
+            defaultKilledYesterday = true;
+            chancePercent = 1;
+            status = "low";
+            prediction = "Morto Ontem (Próximo em breve)";
+        } else if (lastSeenDays >= boss.intervalMin) {
             const overdue = lastSeenDays - boss.intervalMin;
             chancePercent = Math.min(50, Math.floor((overdue + 1) * (35 / (boss.intervalMax - boss.intervalMin + 1))) + 5);
             if (chancePercent >= 12) {
@@ -997,7 +939,8 @@ function getWorldBossData(boss, worldName) {
         chancePercent,
         status,
         lastSeenDays,
-        prediction
+        prediction,
+        defaultKilledYesterday
     };
 }
 
@@ -1005,6 +948,7 @@ function getWorldBossData(boss, worldName) {
 function initBossTracker() {
     loadBossWorldSelection();
     loadBossChecks();
+    loadBossKills();
     populateWorldSelect();
     setupBossEventListeners();
     renderBossTracker();
@@ -1012,6 +956,10 @@ function initBossTracker() {
 
 function getStorageKey() {
     return BOSS_STORAGE_PREFIX + bossTrackerState.selectedWorld.toLowerCase();
+}
+
+function getKillsStorageKey() {
+    return BOSS_KILLS_PREFIX + bossTrackerState.selectedWorld.toLowerCase();
 }
 
 function loadBossWorldSelection() {
@@ -1029,11 +977,7 @@ function loadBossChecks() {
     try {
         const key = getStorageKey();
         const saved = localStorage.getItem(key);
-        if (saved) {
-            bossTrackerState.checkedBosses = JSON.parse(saved);
-        } else {
-            bossTrackerState.checkedBosses = {};
-        }
+        bossTrackerState.checkedBosses = saved ? JSON.parse(saved) : {};
     } catch (e) {
         console.warn("[BossTracker] Erro ao carregar checks:", e);
         bossTrackerState.checkedBosses = {};
@@ -1046,6 +990,26 @@ function saveBossChecks() {
         localStorage.setItem(key, JSON.stringify(bossTrackerState.checkedBosses));
     } catch (e) {
         console.warn("[BossTracker] Erro ao salvar checks:", e);
+    }
+}
+
+function loadBossKills() {
+    try {
+        const key = getKillsStorageKey();
+        const saved = localStorage.getItem(key);
+        bossTrackerState.killedBosses = saved ? JSON.parse(saved) : {};
+    } catch (e) {
+        console.warn("[BossTracker] Erro ao carregar kills:", e);
+        bossTrackerState.killedBosses = {};
+    }
+}
+
+function saveBossKills() {
+    try {
+        const key = getKillsStorageKey();
+        localStorage.setItem(key, JSON.stringify(bossTrackerState.killedBosses));
+    } catch (e) {
+        console.warn("[BossTracker] Erro ao salvar kills:", e);
     }
 }
 
@@ -1072,6 +1036,7 @@ function setupBossEventListeners() {
             bossTrackerState.selectedWorld = e.target.value;
             saveBossWorldSelection();
             loadBossChecks();
+            loadBossKills();
             renderBossTracker();
             showCustomToast(`Servidor alterado para ${bossTrackerState.selectedWorld}!`);
         });
@@ -1125,7 +1090,7 @@ window.toggleHideBlocked = function(checkbox) {
     renderBossTracker();
 };
 
-// Marcar ou desmarcar boss
+// Marcar ou desmarcar check
 window.toggleBossCheck = function(bossId) {
     const isChecked = !!bossTrackerState.checkedBosses[bossId];
     const boss = MASTER_BOSSES.find(b => b.id === bossId);
@@ -1150,49 +1115,107 @@ window.toggleBossCheck = function(bossId) {
     renderBossTracker();
 };
 
-// Resetar todos os checks do dia
+// Marcar Boss como Morto Hoje
+window.markBossAsKilled = function(bossId) {
+    const boss = MASTER_BOSSES.find(b => b.id === bossId);
+    const bossName = boss ? boss.name : "Boss";
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
+    const dateStr = now.toLocaleDateString("pt-BR");
+
+    bossTrackerState.killedBosses[bossId] = {
+        time: timeStr,
+        date: dateStr,
+        timestamp: Date.now(),
+        isToday: true
+    };
+
+    // Também marca como checado automaticamente
+    bossTrackerState.checkedBosses[bossId] = {
+        time: timeStr,
+        date: dateStr,
+        timestamp: Date.now()
+    };
+
+    saveBossKills();
+    saveBossChecks();
+    renderBossTracker();
+    showCustomToast(`💀 ${bossName} registrado como MORTO hoje às ${timeStr}!`);
+};
+
+// Desfazer morte de Boss (reviver para a lista ativa)
+window.undoBossKill = function(bossId) {
+    const boss = MASTER_BOSSES.find(b => b.id === bossId);
+    const bossName = boss ? boss.name : "Boss";
+
+    delete bossTrackerState.killedBosses[bossId];
+
+    saveBossKills();
+    renderBossTracker();
+    showCustomToast(`↺ Morte de ${bossName} cancelada. Retornado aos spawns ativos!`);
+};
+
+// Resetar todos os checks e mortes do dia
 window.clearAllBossChecks = function() {
-    const count = Object.keys(bossTrackerState.checkedBosses).length;
-    if (count === 0) {
-        alert("Nenhum boss marcado como checado no momento.");
+    const countChecks = Object.keys(bossTrackerState.checkedBosses).length;
+    const countKills = Object.keys(bossTrackerState.killedBosses).length;
+    if (countChecks === 0 && countKills === 0) {
+        alert("Nenhum check ou morte registrada no momento.");
         return;
     }
 
-    if (confirm(`Deseja realmente limpar todos os ${count} checks registrados para o servidor ${bossTrackerState.selectedWorld}?`)) {
+    if (confirm(`Deseja limpar todos os registros do servidor ${bossTrackerState.selectedWorld}?\n(${countChecks} checks e ${countKills} mortes registradas)`)) {
         bossTrackerState.checkedBosses = {};
+        bossTrackerState.killedBosses = {};
         saveBossChecks();
+        saveBossKills();
         renderBossTracker();
-        showCustomToast("Todos os checks foram reiniciados!");
+        showCustomToast("Todos os registros foram reiniciados!");
     }
 };
 
 // Copiar relatório formatado para Discord ou Guild Chat
 window.copyBossCheckReport = function() {
     const worldBosses = MASTER_BOSSES.map(b => getWorldBossData(b, bossTrackerState.selectedWorld));
-    const activeBosses = worldBosses.filter(b => b.chancePercent >= 5);
-    const checkedIds = Object.keys(bossTrackerState.checkedBosses);
+    const killedTodayIds = Object.keys(bossTrackerState.killedBosses).filter(id => bossTrackerState.killedBosses[id].isToday);
+    const activeBosses = worldBosses.filter(b => b.chancePercent >= 5 && !killedTodayIds.includes(b.id));
     const checkedActive = activeBosses.filter(b => !!bossTrackerState.checkedBosses[b.id]);
 
-    let text = `👑 **TIBIA BOSS CHECK REPORT — ${bossTrackerState.selectedWorld.toUpperCase()}**\n`;
-    text += `📅 Data: ${new Date().toLocaleDateString("pt-BR")} | Progresso: ${checkedActive.length}/${activeBosses.length} Bosses Ativos\n`;
+    let text = `👑 **TIBIA BOSS HUNTER REPORT — ${bossTrackerState.selectedWorld.toUpperCase()}**\n`;
+    text += `📅 Data: ${new Date().toLocaleDateString("pt-BR")}\n`;
+    text += `⚔️ Status: ${killedTodayIds.length} Mortos | ${checkedActive.length}/${activeBosses.length} Vivos Checados\n`;
     text += `-----------------------------------------------\n`;
 
-    if (checkedIds.length === 0) {
-        text += `❌ Nenhum boss checado hoje até o momento.\n`;
-    } else {
-        text += `**Bosses Checados:**\n`;
-        checkedIds.forEach(id => {
+    if (killedTodayIds.length > 0) {
+        text += `**💀 BOSSES MORTOS HOJE:**\n`;
+        killedTodayIds.forEach(id => {
             const b = worldBosses.find(x => x.id === id);
-            const checkInfo = bossTrackerState.checkedBosses[id];
+            const killData = bossTrackerState.killedBosses[id];
             if (b) {
-                text += `✅ **${b.name}** (${b.chancePercent}% chance) [${b.location}] — Checado às ${checkInfo.time}\n`;
+                text += `❌ **${b.name}** [${b.location}] — Morto às ${killData.time}\n`;
+            }
+        });
+        text += `\n`;
+    }
+
+    text += `**✅ CHECADOS (VIVOS / DISPONÍVEIS):**\n`;
+    const checkedAlive = Object.keys(bossTrackerState.checkedBosses).filter(id => !killedTodayIds.includes(id));
+    if (checkedAlive.length === 0) {
+        text += `(Nenhum boss vivo checado ainda)\n`;
+    } else {
+        checkedAlive.forEach(id => {
+            const b = worldBosses.find(x => x.id === id);
+            const checkData = bossTrackerState.checkedBosses[id];
+            if (b) {
+                text += `✅ **${b.name}** (${b.chancePercent}%) — Checado às ${checkData.time}\n`;
             }
         });
     }
 
     const pendingHigh = activeBosses.filter(b => !bossTrackerState.checkedBosses[b.id] && b.chancePercent >= 10);
     if (pendingHigh.length > 0) {
-        text += `\n**⚠️ Prioridades Pendentes:**\n`;
+        text += `\n**⚠️ PENDENTES DE ALTA PRIORIDADE:**\n`;
         pendingHigh.forEach(b => {
             text += `⏳ **${b.name}** (${b.chancePercent}%) — ${b.location}\n`;
         });
@@ -1204,15 +1227,36 @@ window.copyBossCheckReport = function() {
         copyTextToClipboard(text);
     } else {
         navigator.clipboard.writeText(text).then(() => {
-            showCustomToast("Relatório de checks copiado com sucesso!");
+            showCustomToast("Relatório completo de checks e mortes copiado!");
         });
     }
 };
 
-// Obter lista filtrada e processada do servidor atual
+// Obter lista processada do servidor atual com flags de kill
 function getProcessedWorldBosses() {
     const worldName = bossTrackerState.selectedWorld;
-    return MASTER_BOSSES.map(b => getWorldBossData(b, worldName));
+    return MASTER_BOSSES.map(b => {
+        const data = getWorldBossData(b, worldName);
+        const killRecord = bossTrackerState.killedBosses[b.id];
+
+        let isKilledToday = false;
+        let isKilledYesterday = false;
+        let killTime = null;
+
+        if (killRecord && killRecord.isToday) {
+            isKilledToday = true;
+            killTime = killRecord.time;
+        } else if (data.defaultKilledYesterday && !killRecord) {
+            isKilledYesterday = true;
+        }
+
+        return {
+            ...data,
+            isKilledToday,
+            isKilledYesterday,
+            killTime
+        };
+    });
 }
 
 // Filtragem e Ordenação
@@ -1221,11 +1265,6 @@ function getFilteredBosses() {
 
     return worldBosses.filter(boss => {
         const isChecked = !!bossTrackerState.checkedBosses[boss.id];
-
-        // Ocultar bloqueados se o toggle estiver ativo e não for busca específica
-        if (bossTrackerState.hideBlockedBosses && !bossTrackerState.searchQuery && bossTrackerState.statusFilter === "all") {
-            if (boss.chancePercent === 0) return false;
-        }
 
         // Filtro de Texto (Nome, Local, Loots, Categoria)
         if (bossTrackerState.searchQuery) {
@@ -1237,17 +1276,24 @@ function getFilteredBosses() {
             if (!matchName && !matchLoc && !matchDrop && !matchCat) return false;
         }
 
-        // Filtro de Status / Chance
-        if (bossTrackerState.statusFilter === "high" && boss.status !== "high") return false;
-        if (bossTrackerState.statusFilter === "medium" && boss.status !== "medium") return false;
-        if (bossTrackerState.statusFilter === "low" && boss.status !== "low") return false;
+        // Filtro de Status / Chance / Mortos
+        if (bossTrackerState.statusFilter === "high" && (boss.status !== "high" || boss.isKilledToday)) return false;
+        if (bossTrackerState.statusFilter === "medium" && (boss.status !== "medium" || boss.isKilledToday)) return false;
+        if (bossTrackerState.statusFilter === "low" && (boss.status !== "low" || boss.isKilledToday)) return false;
+        if (bossTrackerState.statusFilter === "killed_today" && !boss.isKilledToday) return false;
+        if (bossTrackerState.statusFilter === "killed_yesterday" && !boss.isKilledYesterday) return false;
         if (bossTrackerState.statusFilter === "blocked" && boss.status !== "blocked") return false;
         if (bossTrackerState.statusFilter === "checked" && !isChecked) return false;
-        if (bossTrackerState.statusFilter === "unchecked" && isChecked) return false;
+        if (bossTrackerState.statusFilter === "unchecked" && (isChecked || boss.isKilledToday)) return false;
 
         // Filtro de Categoria
         if (bossTrackerState.categoryFilter !== "all") {
             if (boss.category !== bossTrackerState.categoryFilter) return false;
+        }
+
+        // Ocultar bloqueados se o toggle estiver ativo e não for busca específica
+        if (bossTrackerState.hideBlockedBosses && !bossTrackerState.searchQuery && bossTrackerState.statusFilter === "all") {
+            if (boss.chancePercent === 0 && !boss.isKilledToday && !boss.isKilledYesterday) return false;
         }
 
         return true;
@@ -1281,20 +1327,23 @@ function renderBossTracker() {
 // Barra de Progresso e Métricas
 function renderBossProgressStats() {
     const worldBosses = getProcessedWorldBosses();
-    const activeBosses = worldBosses.filter(b => b.chancePercent >= 5);
-    const activeChecked = activeBosses.filter(b => !!bossTrackerState.checkedBosses[b.id]);
-    const percent = activeBosses.length > 0 ? Math.round((activeChecked.length / activeBosses.length) * 100) : 0;
+    const killedToday = worldBosses.filter(b => b.isKilledToday);
+    const activeAlive = worldBosses.filter(b => b.chancePercent >= 5 && !b.isKilledToday);
+    const checkedAlive = activeAlive.filter(b => !!bossTrackerState.checkedBosses[b.id]);
+    const percent = activeAlive.length > 0 ? Math.round((checkedAlive.length / activeAlive.length) * 100) : 0;
 
     const elTotal = document.getElementById("stat-boss-total");
     const elHigh = document.getElementById("stat-boss-high");
+    const elKilled = document.getElementById("stat-boss-killed");
     const elChecked = document.getElementById("stat-boss-checked");
     const elPercent = document.getElementById("stat-boss-progress-percent");
     const elBar = document.getElementById("stat-boss-progress-bar");
     const elServerLabel = document.getElementById("boss-current-server-name");
 
     if (elTotal) elTotal.innerText = worldBosses.length;
-    if (elHigh) elHigh.innerText = activeBosses.length;
-    if (elChecked) elChecked.innerText = `${activeChecked.length} / ${activeBosses.length}`;
+    if (elHigh) elHigh.innerText = activeAlive.length;
+    if (elKilled) elKilled.innerText = killedToday.length;
+    if (elChecked) elChecked.innerText = `${checkedAlive.length} / ${activeAlive.length}`;
     if (elPercent) elPercent.innerText = `${percent}%`;
     if (elBar) elBar.style.width = `${percent}%`;
     if (elServerLabel) elServerLabel.innerText = bossTrackerState.selectedWorld;
@@ -1309,7 +1358,15 @@ function generateBossCardHTML(boss) {
     let chanceText = "Baixa Chance";
     let chanceColor = "hsl(30, 90%, 55%)";
 
-    if (boss.chancePercent >= 15) {
+    if (boss.isKilledToday) {
+        chanceClass = "badge-chance-killed";
+        chanceText = "💀 Morto Hoje";
+        chanceColor = "hsl(0, 85%, 60%)";
+    } else if (boss.isKilledYesterday) {
+        chanceClass = "badge-chance-yesterday";
+        chanceText = "📅 Morto Ontem";
+        chanceColor = "hsl(280, 75%, 65%)";
+    } else if (boss.chancePercent >= 15) {
         chanceClass = "badge-chance-high";
         chanceText = "Alta Chance";
         chanceColor = "hsl(140, 80%, 45%)";
@@ -1323,12 +1380,18 @@ function generateBossCardHTML(boss) {
         chanceColor = "hsl(0, 0%, 55%)";
     }
 
+    let cardExtraClass = "";
+    if (boss.isKilledToday) cardExtraClass = "boss-card-killed";
+    else if (boss.isKilledYesterday) cardExtraClass = "boss-card-yesterday";
+    else if (isChecked) cardExtraClass = "boss-card-checked";
+    else if (boss.chancePercent === 0) cardExtraClass = "boss-card-blocked";
+
     return `
-    <div class="boss-card ${isChecked ? 'boss-card-checked' : ''} ${boss.chancePercent === 0 ? 'boss-card-blocked' : ''}" data-boss-id="${boss.id}">
+    <div class="boss-card ${cardExtraClass}" data-boss-id="${boss.id}">
         <div class="boss-card-top">
             <div class="boss-portrait-box">
                 <img src="${boss.image}" alt="${boss.name}" class="boss-portrait-img" onerror="this.src='imagens/Compass.gif';">
-                ${isChecked ? `<span class="boss-checked-stamp">CHECKED</span>` : ''}
+                ${boss.isKilledToday ? `<span class="boss-killed-stamp">SLAIN</span>` : (isChecked ? `<span class="boss-checked-stamp">CHECKED</span>` : '')}
             </div>
             <div class="boss-info-header">
                 <div class="boss-title-row">
@@ -1337,7 +1400,7 @@ function generateBossCardHTML(boss) {
                 </div>
                 <div class="boss-chance-pill ${chanceClass}">
                     <span class="chance-indicator" style="background:${chanceColor};"></span>
-                    <strong>${chanceText}</strong> (${boss.chancePercent}%)
+                    <strong>${chanceText}</strong> ${boss.isKilledToday ? '' : `(${boss.chancePercent}%)`}
                 </div>
             </div>
         </div>
@@ -1348,8 +1411,10 @@ function generateBossCardHTML(boss) {
                 <span class="boss-detail-value">${boss.location}</span>
             </div>
             <div class="boss-detail-row">
-                <span class="boss-detail-label">⏳ Previsão:</span>
-                <span class="boss-detail-value"><strong>${boss.prediction}</strong> (visto há ${boss.lastSeenDays}d)</span>
+                <span class="boss-detail-label">⏳ Status:</span>
+                <span class="boss-detail-value">
+                    ${boss.isKilledToday ? `<strong>Morto hoje às ${boss.killTime}</strong> (Entrou em Cooldown)` : `<strong>${boss.prediction}</strong> (visto há ${boss.lastSeenDays}d)`}
+                </span>
             </div>
             <div class="boss-detail-row">
                 <span class="boss-detail-label">💎 Loots:</span>
@@ -1358,21 +1423,27 @@ function generateBossCardHTML(boss) {
         </div>
 
         <div class="boss-card-footer">
-            ${isChecked ? `
-            <div class="boss-check-status checked">
-                <span class="check-time-icon">🕒</span>
-                <span>Checado às <strong>${checkData.time}</strong></span>
+            ${boss.isKilledToday ? `
+            <div class="boss-check-status killed">
+                <span>💀 Morto às <strong>${boss.killTime}</strong></span>
             </div>
-            <button class="btn-boss-check checked" onclick="toggleBossCheck('${boss.id}')" title="Clique para desmarcar">
-                <span>✅ Checado</span>
-            </button>
+            <div class="boss-card-actions">
+                <button class="btn-boss-undo-kill" onclick="undoBossKill('${boss.id}')" title="Desfazer registro de morte">
+                    <span>↺ Desfazer</span>
+                </button>
+            </div>
             ` : `
-            <div class="boss-check-status pending">
-                <span>${boss.chancePercent > 0 ? 'Pendente' : 'Fora da janela'}</span>
+            <div class="boss-check-status ${isChecked ? 'checked' : 'pending'}">
+                ${isChecked ? `<span>🕒 Checado <strong>${checkData.time}</strong></span>` : `<span>${boss.chancePercent > 0 ? 'Pendente' : 'Fora da janela'}</span>`}
             </div>
-            <button class="btn-boss-check" onclick="toggleBossCheck('${boss.id}')">
-                <span>⏱️ Marcar Check</span>
-            </button>
+            <div class="boss-card-actions">
+                <button class="btn-boss-check ${isChecked ? 'checked' : ''}" onclick="toggleBossCheck('${boss.id}')" title="${isChecked ? 'Clique para desmarcar check' : 'Marcar como checado'}">
+                    <span>${isChecked ? '✅ Checado' : '⏱️ Check'}</span>
+                </button>
+                <button class="btn-boss-kill-action" onclick="markBossAsKilled('${boss.id}')" title="Registrar que o boss foi morto hoje no servidor">
+                    <span>💀 Morto</span>
+                </button>
+            </div>
             `}
         </div>
     </div>
@@ -1400,7 +1471,7 @@ function renderBossCards() {
 
     if (emptyState) emptyState.style.display = "none";
 
-    // Se estiver filtrando ou buscando, exibe em grid direto
+    // Se estiver buscando ou com filtro específico ativo, exibe em subgrid direto
     if (bossTrackerState.searchQuery || bossTrackerState.statusFilter !== "all" || bossTrackerState.categoryFilter !== "all" || bossTrackerState.sortBy !== "chance_desc") {
         container.innerHTML = `
         <div class="boss-cards-subgrid">
@@ -1411,33 +1482,78 @@ function renderBossCards() {
     }
 
     // Organização em seções lógicas:
-    // 1. 🔥 Em Disputa / Hoje (Alta & Média Chance)
-    // 2. ⏳ Baixa Chance / Próximos Spawns
-    // 3. 🔒 Bloqueados / Cooldown (Se ativado)
-    const activeBosses = bosses.filter(b => b.chancePercent >= 5);
-    const lowBosses = bosses.filter(b => b.chancePercent > 0 && b.chancePercent < 5);
-    const blockedBosses = bosses.filter(b => b.chancePercent === 0);
+    // 1. 🔥 Bosses com Chance Hoje (Janela de Spawn Aberta / Vivos)
+    // 2. 💀 Bosses Mortos Hoje
+    // 3. 📅 Mortos no Dia Anterior (Ontem)
+    // 4. ⏳ Baixa Chance / Próximos Spawns
+    // 5. 🔒 Bloqueados / Em Cooldown Geral (Se ativado)
+
+    const killedToday = bosses.filter(b => b.isKilledToday);
+    const activeAlive = bosses.filter(b => b.chancePercent >= 5 && !b.isKilledToday);
+    const killedYesterday = bosses.filter(b => b.isKilledYesterday && !b.isKilledToday);
+    const lowBosses = bosses.filter(b => b.chancePercent > 0 && b.chancePercent < 5 && !b.isKilledToday && !b.isKilledYesterday);
+    const blockedBosses = bosses.filter(b => b.chancePercent === 0 && !b.isKilledToday && !b.isKilledYesterday);
 
     let html = "";
 
-    if (activeBosses.length > 0) {
+    // 1. BOSSES COM CHANCE HOJE
+    if (activeAlive.length > 0) {
         html += `
         <section class="boss-section-block">
             <div class="boss-section-header highlight-today">
                 <div class="boss-section-title">
                     <span class="boss-section-icon">🔥</span>
                     <h2>Bosses com Chance Hoje (Janela de Spawn Aberta)</h2>
-                    <span class="boss-section-badge">${activeBosses.length} bosses</span>
+                    <span class="boss-section-badge">${activeAlive.length} bosses ativos</span>
                 </div>
-                <p class="boss-section-subtitle">Bosses com probabilidade real de nascer no servidor <strong>${bossTrackerState.selectedWorld}</strong> hoje. Foque seus checks diários aqui!</p>
+                <p class="boss-section-subtitle">Bosses com probabilidade real de nascer no servidor <strong>${bossTrackerState.selectedWorld}</strong> hoje. Cheque os locais ou marque como morto caso tenha sido derrotado.</p>
             </div>
             <div class="boss-cards-subgrid">
-                ${activeBosses.map(b => generateBossCardHTML(b)).join("")}
+                ${activeAlive.map(b => generateBossCardHTML(b)).join("")}
             </div>
         </section>
         `;
     }
 
+    // 2. BOSSES MORTOS HOJE
+    if (killedToday.length > 0) {
+        html += `
+        <section class="boss-section-block">
+            <div class="boss-section-header highlight-killed">
+                <div class="boss-section-title">
+                    <span class="boss-section-icon">💀</span>
+                    <h2>Bosses Mortos Hoje (${bossTrackerState.selectedWorld})</h2>
+                    <span class="boss-section-badge killed">${killedToday.length} mortos hoje</span>
+                </div>
+                <p class="boss-section-subtitle">Estes bosses já foram encontrados e derrotados hoje. Eles entraram em contagem de cooldown.</p>
+            </div>
+            <div class="boss-cards-subgrid">
+                ${killedToday.map(b => generateBossCardHTML(b)).join("")}
+            </div>
+        </section>
+        `;
+    }
+
+    // 3. BOSSES MORTOS NO DIA ANTERIOR (ONTEM)
+    if (killedYesterday.length > 0) {
+        html += `
+        <section class="boss-section-block">
+            <div class="boss-section-header highlight-yesterday">
+                <div class="boss-section-title">
+                    <span class="boss-section-icon">📅</span>
+                    <h2>Mortos no Dia Anterior (Ontem)</h2>
+                    <span class="boss-section-badge yesterday">${killedYesterday.length} bosses</span>
+                </div>
+                <p class="boss-section-subtitle">Bosses registrados como derrotados ontem em <strong>${bossTrackerState.selectedWorld}</strong> (cumprindo primeiro dia de cooldown).</p>
+            </div>
+            <div class="boss-cards-subgrid">
+                ${killedYesterday.map(b => generateBossCardHTML(b)).join("")}
+            </div>
+        </section>
+        `;
+    }
+
+    // 4. BAIXA CHANCE (PRÓXIMOS DIAS)
     if (lowBosses.length > 0) {
         html += `
         <section class="boss-section-block">
@@ -1456,6 +1572,7 @@ function renderBossCards() {
         `;
     }
 
+    // 5. BLOQUEADOS / COOLDOWN GERAL
     if (blockedBosses.length > 0 && !bossTrackerState.hideBlockedBosses) {
         html += `
         <section class="boss-section-block">
@@ -1465,7 +1582,7 @@ function renderBossCards() {
                     <h2>Bloqueados / Em Cooldown (Sem Chance Hoje)</h2>
                     <span class="boss-section-badge blocked">${blockedBosses.length} bosses</span>
                 </div>
-                <p class="boss-section-subtitle">Bosses mortos recentemente ou raids de longos meses de intervalo (ex: Ferumbras, Ghazbaran).</p>
+                <p class="boss-section-subtitle">Bosses mortos há poucos dias ou raids de longos meses de intervalo (ex: Ferumbras, Ghazbaran).</p>
             </div>
             <div class="boss-cards-subgrid">
                 ${blockedBosses.map(b => generateBossCardHTML(b)).join("")}

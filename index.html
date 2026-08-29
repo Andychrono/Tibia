@@ -1088,19 +1088,23 @@ Player2:
                 <div class="boss-stats-banner">
                     <div class="boss-stat-item">
                         <span class="boss-stat-num" id="stat-boss-total">0</span>
-                        <span class="boss-stat-title">Bosses Rastreados</span>
+                        <span class="boss-stat-title">Bosses Monitorados</span>
                     </div>
                     <div class="boss-stat-item">
                         <span class="boss-stat-num highlight-high" id="stat-boss-high">0</span>
-                        <span class="boss-stat-title">Alta Chance Hoje</span>
+                        <span class="boss-stat-title">Com Chance Hoje</span>
+                    </div>
+                    <div class="boss-stat-item">
+                        <span class="boss-stat-num highlight-killed" id="stat-boss-killed">0</span>
+                        <span class="boss-stat-title">Mortos Hoje</span>
                     </div>
                     <div class="boss-stat-item">
                         <span class="boss-stat-num highlight-check" id="stat-boss-checked">0 / 0</span>
-                        <span class="boss-stat-title">Checados (Alta Chance)</span>
+                        <span class="boss-stat-title">Checados (Vivos)</span>
                     </div>
                     <div class="boss-stat-progress-box">
                         <div class="boss-progress-label-row">
-                            <span>Progresso dos Checks em <strong id="boss-current-server-name">Ustebra</strong>:</span>
+                            <span>Checks em <strong id="boss-current-server-name">Ustebra</strong>:</span>
                             <span id="stat-boss-progress-percent" style="font-weight: 800; color: var(--gold);">0%</span>
                         </div>
                         <div class="boss-progress-track">
@@ -1136,6 +1140,8 @@ Player2:
                         <button class="boss-status-btn active" onclick="setBossStatusFilter('all', this)">🌐 Todos</button>
                         <button class="boss-status-btn filter-high" onclick="setBossStatusFilter('high', this)">🔥 Alta Chance</button>
                         <button class="boss-status-btn filter-med" onclick="setBossStatusFilter('medium', this)">⚡ Média Chance</button>
+                        <button class="boss-status-btn filter-killed-today" onclick="setBossStatusFilter('killed_today', this)">💀 Mortos Hoje</button>
+                        <button class="boss-status-btn filter-killed-yesterday" onclick="setBossStatusFilter('killed_yesterday', this)">📅 Mortos Ontem</button>
                         <button class="boss-status-btn filter-low" onclick="setBossStatusFilter('low', this)">⏳ Baixa Chance</button>
                         <button class="boss-status-btn filter-checked" onclick="setBossStatusFilter('checked', this)">✅ Checados</button>
                         <button class="boss-status-btn filter-unchecked" onclick="setBossStatusFilter('unchecked', this)">❌ Pendentes</button>

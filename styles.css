@@ -2055,5 +2055,148 @@ footer a:hover {
     color: var(--text-muted);
 }
 
+/* ============================================================
+   ESTILOS DE BOSSES MORTOS (HOJE & ONTEM)
+   ============================================================ */
+.boss-stat-num.highlight-killed {
+    color: hsl(0, 85%, 65%);
+}
+
+.boss-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-boss-kill-action {
+    background: rgba(231, 76, 60, 0.12);
+    border: 1px solid hsla(0, 85%, 60%, 0.35);
+    border-radius: var(--radius-md);
+    color: hsl(0, 85%, 72%);
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.btn-boss-kill-action:hover {
+    background: linear-gradient(135deg, hsl(0, 80%, 50%), hsl(0, 85%, 40%));
+    border-color: hsl(0, 85%, 55%);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.35);
+}
+
+.btn-boss-undo-kill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-boss-undo-kill:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+/* Card States */
+.boss-card-killed {
+    border-color: hsla(0, 85%, 55%, 0.45) !important;
+    background: linear-gradient(180deg, rgba(231, 76, 60, 0.05) 0%, rgba(13, 17, 23, 0.95) 100%) !important;
+}
+
+.boss-card-killed:hover {
+    border-color: hsl(0, 85%, 60%) !important;
+    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.2);
+}
+
+.boss-card-yesterday {
+    border-color: hsla(280, 75%, 65%, 0.3) !important;
+    background: linear-gradient(180deg, rgba(155, 89, 182, 0.04) 0%, rgba(13, 17, 23, 0.95) 100%) !important;
+}
+
+.boss-card-yesterday:hover {
+    border-color: hsl(280, 75%, 65%) !important;
+    box-shadow: 0 8px 24px rgba(155, 89, 182, 0.18);
+}
+
+.boss-killed-stamp {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: hsl(0, 85%, 45%);
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 900;
+    padding: 1px 4px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+}
+
+.badge-chance-killed {
+    background: rgba(231, 76, 60, 0.15);
+    border-color: hsla(0, 85%, 60%, 0.4);
+    color: hsl(0, 85%, 68%);
+}
+
+.badge-chance-yesterday {
+    background: rgba(155, 89, 182, 0.15);
+    border-color: hsla(280, 75%, 65%, 0.4);
+    color: hsl(280, 75%, 72%);
+}
+
+.boss-section-header.highlight-killed {
+    border-bottom-color: hsla(0, 85%, 60%, 0.35);
+}
+
+.boss-section-header.highlight-yesterday {
+    border-bottom-color: hsla(280, 75%, 65%, 0.35);
+}
+
+.boss-section-badge.killed {
+    background: rgba(231, 76, 60, 0.18);
+    border-color: hsla(0, 85%, 60%, 0.45);
+    color: hsl(0, 85%, 68%);
+}
+
+.boss-section-badge.yesterday {
+    background: rgba(155, 89, 182, 0.18);
+    border-color: hsla(280, 75%, 65%, 0.45);
+    color: hsl(280, 75%, 75%);
+}
+
+.boss-check-status.killed {
+    color: hsl(0, 85%, 65%);
+    font-weight: 600;
+}
+
+.boss-status-btn.filter-killed-today:hover {
+    border-color: hsl(0, 85%, 60%);
+    color: hsl(0, 85%, 70%);
+}
+
+.boss-status-btn.filter-killed-yesterday:hover {
+    border-color: hsl(280, 75%, 65%);
+    color: hsl(280, 75%, 75%);
+}
+
+
 
 
