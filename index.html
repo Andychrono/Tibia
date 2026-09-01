@@ -1072,14 +1072,29 @@ Player2:
                         <select id="boss-world-select" class="boss-world-select">
                             <!-- Injetado via JS -->
                         </select>
+                        <button id="btn-favorite-world" class="btn-favorite-world" onclick="toggleFavoriteCurrentWorld()" title="Favoritar este servidor">
+                            <span class="fav-star-icon" id="fav-star-icon">⭐</span>
+                            <span class="fav-btn-label" id="fav-btn-label">Servidor Favorito</span>
+                        </button>
                     </div>
                     
+                    <div class="boss-sync-info-box">
+                        <div class="boss-sync-status-pill" id="boss-sync-status">
+                            <span class="sync-live-dot"></span>
+                            <span id="boss-sync-text">Auto-update: a cada 1h</span>
+                        </div>
+                        <span id="boss-last-sync-label" class="boss-last-sync-time">Última checagem: agora</span>
+                    </div>
+
                     <div class="boss-quick-actions">
+                        <button class="btn-boss-action btn-sync-now" id="btn-sync-boss-data" onclick="manualSyncBossData()" title="Buscar estatísticas e atualizar dados agora">
+                            <span class="sync-icon">🔄</span> Atualizar Agora
+                        </button>
                         <button class="btn-boss-action btn-copy-report" onclick="copyBossCheckReport()" title="Copiar relatório formatado para Discord/Guild">
                             📋 Copiar Relatório
                         </button>
                         <button class="btn-boss-action btn-clear-checks" onclick="clearAllBossChecks()" title="Reiniciar todos os checks do dia">
-                            🔄 Limpar Checks
+                            🧹 Limpar Checks
                         </button>
                     </div>
                 </div>

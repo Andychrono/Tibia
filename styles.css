@@ -1350,6 +1350,82 @@ footer a:hover {
     color: var(--text-primary);
 }
 
+.btn-favorite-world {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    outline: none;
+}
+
+.btn-favorite-world:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(218, 165, 32, 0.12);
+    transform: translateY(-1px);
+}
+
+.btn-favorite-world.is-favorite {
+    background: rgba(218, 165, 32, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.2);
+}
+
+.btn-favorite-world.is-favorite:hover {
+    background: rgba(218, 165, 32, 0.25);
+    box-shadow: 0 0 14px rgba(218, 165, 32, 0.35);
+}
+
+.boss-sync-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.boss-sync-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(46, 204, 113, 0.12);
+    border: 1px solid hsla(140, 80%, 45%, 0.35);
+    color: hsl(140, 80%, 55%);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.sync-live-dot {
+    width: 7px;
+    height: 7px;
+    background: hsl(140, 80%, 45%);
+    border-radius: 50%;
+    box-shadow: 0 0 6px hsl(140, 80%, 50%);
+    animation: pulseSyncDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseSyncDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.boss-last-sync-time {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
 .boss-quick-actions {
     display: flex;
     align-items: center;
@@ -1377,6 +1453,27 @@ footer a:hover {
     border-color: var(--gold);
     color: var(--text-primary);
     background: rgba(212, 175, 55, 0.1);
+}
+
+.btn-sync-now {
+    border-color: rgba(46, 204, 113, 0.3);
+    color: hsl(140, 80%, 65%);
+}
+
+.btn-sync-now:hover {
+    border-color: hsl(140, 80%, 45%);
+    background: rgba(46, 204, 113, 0.12);
+    color: #fff;
+}
+
+.btn-sync-now.syncing .sync-icon {
+    display: inline-block;
+    animation: spinSync 0.8s linear infinite;
+}
+
+@keyframes spinSync {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .btn-copy-report {
@@ -1873,11 +1970,11 @@ footer a:hover {
     font-size: 0.75rem;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 .boss-check-status.checked {
-    color: hsl(140, 80%, 50%);
+    color: hsl(140, 80%, 55%);
     font-weight: 600;
 }
 
@@ -1885,9 +1982,20 @@ footer a:hover {
     color: var(--text-muted);
 }
 
-.btn-boss-check {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-color);
+.boss-checked-time strong {
+    color: hsl(140, 80%, 65%);
+    font-weight: 700;
+}
+
+.boss-pending-time {
+    color: var(--text-muted);
+    font-style: italic;
+    opacity: 0.85;
+}
+
+.btn-boss-check, .btn-boss-check-action {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-md);
     color: var(--text-primary);
     font-family: var(--font-body);
@@ -1895,30 +2003,35 @@ footer a:hover {
     font-weight: 700;
     padding: 8px 14px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     white-space: nowrap;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.btn-boss-check:hover {
-    border-color: var(--gold);
-    background: var(--gold-glow);
-    color: #fff;
-    transform: translateY(-1px);
-}
-
-.btn-boss-check.checked {
-    background: linear-gradient(135deg, hsl(140, 80%, 40%), hsl(140, 85%, 32%));
+.btn-boss-check:hover, .btn-boss-check-action:hover {
     border-color: hsl(140, 80%, 45%);
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+    background: rgba(46, 204, 113, 0.15);
+    color: hsl(140, 80%, 65%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
 }
 
-.btn-boss-check.checked:hover {
-    background: linear-gradient(135deg, hsl(0, 80%, 50%), hsl(0, 85%, 42%));
+.btn-boss-check.checked, .btn-boss-check-action.checked {
+    background: linear-gradient(135deg, hsl(140, 75%, 34%), hsl(140, 85%, 26%));
+    border-color: hsl(140, 80%, 45%);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.35);
+}
+
+.btn-boss-check.checked:hover, .btn-boss-check-action.checked:hover {
+    background: linear-gradient(135deg, hsl(0, 75%, 45%), hsl(0, 85%, 38%));
     border-color: hsl(0, 85%, 55%);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(231, 76, 60, 0.35);
 }
 
 /* Estado Vazio */
