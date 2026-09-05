@@ -581,6 +581,24 @@ window.switchTab = function(targetTab) {
         if (heroSection) {
             heroSection.style.backgroundImage = "linear-gradient(180deg, rgba(13, 17, 23, 0.7) 0%, rgba(13, 17, 23, 0.9) 100%), url('imagens/boss_bg.jpg')";
         }
+    } else if (targetTab === "tab-map") {
+        if (heroLogo) {
+            heroLogo.src = "imagens/Compass.gif";
+            heroLogo.alt = "Mapa Interativo";
+        }
+        if (heroTitle) heroTitle.innerText = "Mapa Interativo do Tibia";
+        if (heroSubtitle) heroSubtitle.innerText = "Explore todos os 16 andares (Floors 0 a 15), localize spawns de bosses com coordenadas precisas X/Y/Z, crie marcadores personalizados e navegue pelo mapa.";
+        if (heroSection) {
+            heroSection.style.backgroundImage = "linear-gradient(180deg, rgba(13, 17, 23, 0.75) 0%, rgba(13, 17, 23, 0.95) 100%), url('imagens/map_bg.jpg')";
+        }
+        setTimeout(() => {
+            if (typeof window.resizeTibiaMap === "function") {
+                window.resizeTibiaMap();
+            }
+            if (typeof window.centerMapOnScreen === "function") {
+                setTimeout(window.centerMapOnScreen, 80);
+            }
+        }, 60);
     }
 };
 

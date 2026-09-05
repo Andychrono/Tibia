@@ -715,9 +715,8 @@ footer a:hover {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
+    z-index: 100;
     margin-bottom: 24px;
 }
 
@@ -1292,17 +1291,55 @@ footer a:hover {
     animation: fadeIn 0.3s ease-out;
 }
 
-/* Painel Superior / Header */
-.boss-header-panel {
+/* Painel de Controle Principal / Header Unificado */
+.boss-control-panel, .boss-header-panel {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    padding: 22px 26px;
+    padding: 16px 20px;
     margin-bottom: 24px;
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
+}
+
+.boss-main-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.boss-main-bar .boss-world-selector-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.boss-main-bar .boss-search-wrapper {
+    flex: 1;
+    min-width: 260px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.boss-main-bar .boss-advanced-toggle-wrapper {
+    flex-shrink: 0;
+}
+
+.boss-advanced-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-md);
 }
 
 .boss-header-top {
@@ -2309,6 +2346,578 @@ footer a:hover {
     border-color: hsl(280, 75%, 65%);
     color: hsl(280, 75%, 75%);
 }
+
+/* ============================================================
+   MAPA INTERATIVO (TIBIAMAPS) — ABA 4
+   ============================================================ */
+.map-tab-container {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Painel Superior de Controles */
+.map-controls-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+.map-controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.map-control-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 6px;
+}
+
+
+/* Caixa de Coordenadas e Busca */
+.map-coords-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.map-coords-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-coords-value-badge {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: hsl(140, 80%, 65%);
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+}
+
+.map-coords-search-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.map-coord-input {
+    width: 90px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 8px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.map-coord-input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+}
+
+.btn-jump-coords {
+    background: var(--gold-gradient);
+    border: 1px solid var(--gold);
+    color: #111;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-jump-coords:hover {
+    color: #000;
+    box-shadow: 0 0 10px var(--gold-glow);
+    transform: translateY(-1px);
+}
+
+/* Ferramentas do Mapa */
+.map-tools-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.map-tools-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.map-tool-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.map-tool-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.map-tool-btn.active {
+    background: rgba(218, 165, 32, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.map-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+    margin-top: 4px;
+}
+
+.map-checkbox-label input[type="checkbox"] {
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+/* Container do Canvas da Viewport */
+.tibia-map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    background: #0a0c10;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.tibia-map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#tibia-map-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: crosshair;
+}
+
+/* Controles Flutuantes de Zoom */
+.map-floating-zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(13, 17, 23, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.map-zoom-btn {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.map-zoom-btn:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+.map-zoom-indicator {
+    height: 24px;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* HUD Cursor Flutuante (Superior Direito) */
+.map-floating-cursor-hud {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(13, 17, 23, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.map-floating-cursor-hud strong {
+    color: hsl(140, 80%, 65%);
+    font-family: monospace;
+}
+
+/* Botões de Alternância de Filtros Avançados / Gavetas */
+.boss-advanced-toggle-bar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+}
+
+.map-advanced-toggle-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.map-quick-layer-toggles {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.map-quick-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(13, 17, 23, 0.85);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.map-quick-toggle-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.map-quick-toggle-btn.active {
+    background: rgba(218, 165, 32, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.25);
+}
+
+.map-quick-toggle-btn.btn-clear-all-quick:hover {
+    border-color: hsl(0, 85%, 60%);
+    color: hsl(0, 85%, 70%);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.btn-toggle-advanced {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(13, 17, 23, 0.85);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-toggle-advanced:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(218, 165, 32, 0.1);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.2);
+}
+
+.btn-toggle-advanced.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(218, 165, 32, 0.15);
+    box-shadow: 0 0 12px rgba(218, 165, 32, 0.25);
+}
+
+.btn-toggle-icon {
+    font-size: 0.95rem;
+}
+
+.btn-toggle-arrow {
+    font-size: 0.75rem;
+    color: var(--gold);
+    transition: transform 0.25s ease;
+}
+
+.boss-advanced-filters-collapse {
+    background: rgba(13, 17, 23, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    margin-bottom: 14px;
+    animation: fadeIn 0.25s ease-out;
+}
+
+/* Controles Flutuantes de Andar (Estilo TibiaMaps: Minimalista & Limpo) */
+.map-tibiamaps-controls {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-tibiamaps-group {
+    background: rgba(13, 17, 23, 0.94);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.map-tm-btn {
+    width: 32px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.map-tm-btn:last-child {
+    border-bottom: none;
+}
+
+.map-tm-btn:hover {
+    background: rgba(218, 165, 32, 0.25);
+    color: var(--gold-light);
+}
+
+.map-tm-floor {
+    width: 32px;
+    height: 28px;
+    background: rgba(218, 165, 32, 0.12);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--gold);
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.map-tm-floor:hover {
+    background: rgba(218, 165, 32, 0.35);
+    color: #fff;
+}
+
+/* Botão de Excluir Marcador */
+.btn-delete-marker {
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid #e74c3c;
+    color: #ff7675;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-delete-marker:hover {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+.map-tool-btn.delete-all {
+    border-color: rgba(231, 76, 60, 0.4);
+    color: #ff7675;
+}
+
+.map-tool-btn.delete-all:hover {
+    background: rgba(231, 76, 60, 0.2);
+    border-color: #e74c3c;
+}
+
+.map-hint-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 56px;
+    background: rgba(13, 17, 23, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Tooltip Flutuante de Boss */
+.map-boss-tooltip {
+    position: absolute;
+    background: rgba(20, 24, 32, 0.96);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 12px var(--gold-glow);
+    z-index: 20;
+    transform: translate(-50%, -100%);
+    pointer-events: auto;
+    min-width: 180px;
+    animation: scaleIn 0.2s ease-out;
+}
+
+.map-tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+
+.map-tooltip-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.map-tooltip-name {
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.map-tooltip-cat {
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.map-tooltip-close {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.map-tooltip-close:hover {
+    color: hsl(0, 85%, 60%);
+}
+
+.map-tooltip-coords {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: hsl(140, 80%, 65%);
+    font-weight: 700;
+}
+
+/* Link de Localização clicável nos Cards de Bosses */
+.boss-location-link {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    transition: var(--transition);
+}
+
+.boss-location-link:hover {
+    color: var(--gold-light) !important;
+}
+
+.boss-map-badge {
+    background: rgba(218, 165, 32, 0.12);
+    border: 1px solid rgba(218, 165, 32, 0.35);
+    color: var(--gold);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    transition: var(--transition);
+}
+
+.boss-location-link:hover .boss-map-badge {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 8px var(--gold-glow);
+}
+
 
 
 

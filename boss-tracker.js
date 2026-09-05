@@ -1628,7 +1628,10 @@ function generateBossCardHTML(boss) {
         <div class="boss-details-grid">
             <div class="boss-detail-row">
                 <span class="boss-detail-label">📍 Local:</span>
-                <span class="boss-detail-value">${boss.location}</span>
+                <span class="boss-detail-value boss-location-link" onclick="openBossOnMap('${boss.id}')" title="Clique para abrir e centralizar no Mapa Interativo">
+                    <span>${boss.location}</span>
+                    <span class="boss-map-badge">🗺️ Ver no Mapa</span>
+                </span>
             </div>
             <div class="boss-detail-row">
                 <span class="boss-detail-label">⏳ Status:</span>
@@ -1804,6 +1807,128 @@ function renderBossCards() {
 
     container.innerHTML = html;
 }
+
+// Toggle de Filtros Avançados no Check Boss
+window.toggleBossAdvancedFilters = function() {
+    const panel = document.getElementById("boss-advanced-filters-collapse");
+    const chevron = document.getElementById("boss-filters-chevron");
+    const btn = document.getElementById("btn-toggle-boss-filters");
+    if (!panel) return;
+    const isHidden = panel.style.display === "none" || panel.style.display === "";
+    if (isHidden) {
+        panel.style.display = "flex";
+        if (chevron) chevron.innerText = "▲";
+        if (btn) btn.classList.add("active");
+    } else {
+        panel.style.display = "none";
+        if (chevron) chevron.innerText = "▼";
+        if (btn) btn.classList.remove("active");
+    }
+};
+
+// Integração: Abrir Boss no Mapa Interativo
+window.openBossOnMap = function(bossId) {
+    const boss = MASTER_BOSSES.find(b => b.id === bossId);
+    if (!boss) return;
+
+    // Alternar para a aba do Mapa
+    if (typeof window.switchTab === "function") {
+        window.switchTab("tab-map");
+    }
+
+    // Buscar dados do boss no mundo atual para exibir informações ricas no tooltip
+    const processedBoss = typeof getWorldBossData === "function" 
+        ? getWorldBossData(boss, bossTrackerState.selectedWorld)
+        : boss;
+
+    // Coordenadas oficiais verificadas (TibiaMaps.io & TibiaWiki)
+    const bossCoords = {
+        "zevelon_duskbringer": { x: 32766, y: 31578, z: 11 },
+        "diblis_the_fair": { x: 32010, y: 32798, z: 10 },
+        "arachir_the_ancient_one": { x: 32965, y: 32404, z: 12 },
+        "sir_valorcrest": { x: 33263, y: 31768, z: 10 },
+        "the_pale_count": { x: 33001, y: 32432, z: 12 },
+        "undead_cavebear": { x: 31913, y: 32561, z: 10 },
+        "midnight_panther": { x: 32847, y: 32697, z: 7 },
+        "crustacea_gigantica": { x: 32182, y: 32935, z: 9 },
+        "draptor": { x: 33188, y: 31239, z: 7 },
+        "munster": { x: 32098, y: 32216, z: 9 },
+        "apprentice_sheng": { x: 32130, y: 32059, z: 12 },
+        "teleskor": { x: 31977, y: 32228, z: 9 },
+        "rottie_the_rotworm": { x: 32195, y: 32130, z: 9 },
+        "the_plasmother": { x: 32836, y: 32332, z: 15 },
+        "the_handmaiden": { x: 32785, y: 32283, z: 15 },
+        "massacre": { x: 32875, y: 32266, z: 15 },
+        "the_imperor": { x: 32906, y: 32217, z: 15 },
+        "countess_sorrow": { x: 32794, y: 32364, z: 15 },
+        "dracola": { x: 32835, y: 32309, z: 15 },
+        "mr_punish": { x: 32762, y: 32242, z: 15 },
+        "hatebreeder": { x: 33098, y: 31101, z: 14 },
+        "the_frog_prince": { x: 32382, y: 32129, z: 7 },
+        "fernfang": { x: 32903, y: 32330, z: 6 },
+        "tzumrah_the_dazzler": { x: 33326, y: 32650, z: 11 },
+        "the_evil_eye": { x: 32809, y: 31611, z: 14 },
+        "zulazza_the_corruptor": { x: 33180, y: 31380, z: 5 },
+        "big_boss_trolliver": { x: 33134, y: 31723, z: 10 },
+        "smuggler_baron_silvertoe": { x: 32541, y: 32649, z: 10 },
+        "dreadmaw": { x: 33272, y: 31165, z: 5 },
+        "hairman_the_huge": { x: 32846, y: 32509, z: 8 },
+        "xenia": { x: 32891, y: 31888, z: 8 },
+        "rukor_zad": { x: 32603, y: 32386, z: 10 },
+        "high_templar_cobrass": { x: 32957, y: 32841, z: 8 },
+        "yaga_the_crone": { x: 32712, y: 32011, z: 11 },
+        "foreman_kneebiter": { x: 32550, y: 31876, z: 15 },
+        "yeti": { x: 32076, y: 31029, z: 3 },
+        "dharalion": { x: 33034, y: 32175, z: 9 },
+        "general_murius": { x: 32418, y: 32121, z: 15 },
+        "man_in_the_cave": { x: 32131, y: 31147, z: 3 },
+        "ocyakao": { x: 32352, y: 31050, z: 7 },
+        "the_welter": { x: 33021, y: 32662, z: 5 },
+        "shlorg": { x: 33169, y: 31729, z: 9 },
+        "zushuka": { x: 31943, y: 31386, z: 9 },
+        "white_pale": { x: 33130, y: 32431, z: 9 },
+        "furyosa": { x: 32264, y: 32164, z: 7 },
+        "hirintror": { x: 32366, y: 31052, z: 8 },
+        "yakchal": { x: 32204, y: 31006, z: 14 },
+        "dire_penguin": { x: 32116, y: 31114, z: 2 },
+        "groam": { x: 32625, y: 32026, z: 10 },
+        "captain_jones": { x: 33322, y: 32183, z: 7 },
+        "gravelord_oshuran": { x: 32974, y: 32396, z: 12 },
+        "the_big_bad_one": { x: 33171, y: 31681, z: 7 },
+        "barbaria": { x: 32006, y: 31417, z: 7 },
+        "grandfather_tridian": { x: 32412, y: 32778, z: 11 },
+        "the_old_whopper": { x: 33314, y: 31666, z: 11 },
+        "zarabustor": { x: 32509, y: 31595, z: 14 },
+        "warlord_ruzad": { x: 32969, y: 31725, z: 5 },
+        "rotrender": { x: 33885, y: 32293, z: 8 },
+        "ferumbras": { x: 32024, y: 32734, z: 1 },
+        "gazharagoth": { x: 33630, y: 32371, z: 5 },
+        "ghazbaran": { x: 32227, y: 31156, z: 15 },
+        "orshabaal": { x: 33118, y: 31701, z: 7 },
+        "morgaroth": { x: 32168, y: 32663, z: 14 },
+        "omrafir": { x: 33591, y: 32380, z: 12 },
+        "the_abomination": { x: 32740, y: 32435, z: 9 },
+        "morshabaal": { x: 33118, y: 31701, z: 7 }
+    };
+
+    const target = bossCoords[bossId] || { x: 32347, y: 32226, z: 7 };
+
+    // Executar centralização no mapa
+    setTimeout(() => {
+        if (typeof window.resizeTibiaMap === "function") {
+            window.resizeTibiaMap();
+        }
+        if (typeof window.jumpToMapCoordinate === "function") {
+            window.jumpToMapCoordinate(target.x, target.y, target.z, processedBoss);
+        }
+        if (typeof window.centerMapOnScreen === "function") {
+            setTimeout(window.centerMapOnScreen, 80);
+        }
+        if (typeof showCustomToast === "function") {
+            showCustomToast(`🗺️ Exibindo spawn de ${boss.name} no Andar ${target.z}!`);
+        }
+    }, 50);
+};
 
 // Inicializa quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", () => {

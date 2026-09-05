@@ -25,7 +25,10 @@
                 <img src="imagens/ferumbras.gif" alt="" class="tab-icon">
                 Check Boss
             </button>
-
+            <button class="tab-btn" data-tab="tab-map" onclick="switchTab('tab-map')">
+                <img src="imagens/Compass.gif" alt="" class="tab-icon">
+                Mapa Interativo
+            </button>
         </div>
     </nav>
 
@@ -1064,127 +1067,138 @@ Player2:
     <div id="tab-boss" class="tab-content" style="display: none;">
         <div class="container boss-tracker-container">
 
-            <!-- Painel Superior: Servidor, Progresso e Ações -->
-            <section class="boss-header-panel">
-                <div class="boss-header-top">
+            <!-- Painel de Controle Principal (Compacto, Otimizado e Elegante) -->
+            <section class="boss-control-panel">
+                <!-- Linha Principal: Seletor de Servidor, Busca e Botão de Estatísticas & Avançado -->
+                <div class="boss-main-bar">
                     <div class="boss-world-selector-box">
-                        <label for="boss-world-select" class="boss-label">🌍 Servidor / Mundo:</label>
+                        <label for="boss-world-select" class="boss-label">🌍 Servidor:</label>
                         <select id="boss-world-select" class="boss-world-select">
                             <!-- Injetado via JS -->
                         </select>
                         <button id="btn-favorite-world" class="btn-favorite-world" onclick="toggleFavoriteCurrentWorld()" title="Favoritar este servidor">
                             <span class="fav-star-icon" id="fav-star-icon">⭐</span>
-                            <span class="fav-btn-label" id="fav-btn-label">Servidor Favorito</span>
+                            <span class="fav-btn-label" id="fav-btn-label">Favorito</span>
                         </button>
-                    </div>
-                    
-                    <div class="boss-sync-info-box">
-                        <div class="boss-sync-status-pill" id="boss-sync-status">
-                            <span class="sync-live-dot"></span>
-                            <span id="boss-sync-text">Auto-update: a cada 1h</span>
-                        </div>
-                        <span id="boss-last-sync-label" class="boss-last-sync-time">Última checagem: agora</span>
                     </div>
 
-                    <div class="boss-quick-actions">
-                        <button class="btn-boss-action btn-sync-now" id="btn-sync-boss-data" onclick="manualSyncBossData()" title="Buscar estatísticas e atualizar dados agora">
-                            <span class="sync-icon">🔄</span> Atualizar Agora
-                        </button>
-                        <button class="btn-boss-action btn-copy-report" onclick="copyBossCheckReport()" title="Copiar relatório formatado para Discord/Guild">
-                            📋 Copiar Relatório
-                        </button>
-                        <button class="btn-boss-action btn-clear-checks" onclick="clearAllBossChecks()" title="Reiniciar todos os checks do dia">
-                            🧹 Limpar Checks
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Barra de Progresso e Métricas -->
-                <div class="boss-stats-banner">
-                    <div class="boss-stat-item">
-                        <span class="boss-stat-num" id="stat-boss-total">0</span>
-                        <span class="boss-stat-title">Bosses Monitorados</span>
-                    </div>
-                    <div class="boss-stat-item">
-                        <span class="boss-stat-num highlight-high" id="stat-boss-high">0</span>
-                        <span class="boss-stat-title">Com Chance Hoje</span>
-                    </div>
-                    <div class="boss-stat-item">
-                        <span class="boss-stat-num highlight-killed" id="stat-boss-killed">0</span>
-                        <span class="boss-stat-title">Mortos Hoje</span>
-                    </div>
-                    <div class="boss-stat-item">
-                        <span class="boss-stat-num highlight-check" id="stat-boss-checked">0 / 0</span>
-                        <span class="boss-stat-title">Checados (Vivos)</span>
-                    </div>
-                    <div class="boss-stat-progress-box">
-                        <div class="boss-progress-label-row">
-                            <span>Checks em <strong id="boss-current-server-name">Ustebra</strong>:</span>
-                            <span id="stat-boss-progress-percent" style="font-weight: 800; color: var(--gold);">0%</span>
-                        </div>
-                        <div class="boss-progress-track">
-                            <div id="stat-boss-progress-bar" class="boss-progress-fill" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção de Filtros e Busca -->
-            <section class="boss-filters-section">
-                <div class="boss-search-row">
                     <div class="boss-search-wrapper">
                         <span class="boss-search-icon">🔎</span>
-                        <input type="text" id="boss-search-input" class="boss-search-input" placeholder="Buscar por boss, local (ex: Hellgate, Drefia, Folda) ou loot (ex: Great Axe, Dice)...">
+                        <input type="text" id="boss-search-input" class="boss-search-input" placeholder="Buscar por boss, local (ex: Hellgate, Drefia) ou loot (ex: Great Axe, Dice)...">
                     </div>
-                    <div class="boss-sort-wrapper">
-                        <label class="boss-sort-label">Ordenar:</label>
-                        <select id="boss-sort-select" class="boss-sort-select">
-                            <option value="chance_desc">🔥 Maior Chance</option>
-                            <option value="chance_asc">⏳ Menor Chance</option>
-                            <option value="name_asc">🔤 Nome (A-Z)</option>
-                            <option value="last_seen_desc">📅 Última Aparição</option>
-                            <option value="checked_first">✅ Checados Primeiro</option>
-                        </select>
+
+                    <div class="boss-advanced-toggle-wrapper">
+                        <button type="button" class="btn-toggle-advanced" id="btn-toggle-boss-filters" onclick="toggleBossAdvancedFilters()" title="Exibir/Ocultar Estatísticas e Filtros Avançados">
+                            <span class="btn-toggle-icon">⚙️</span>
+                            <span class="btn-toggle-text">Estatísticas & Avançado</span>
+                            <span class="btn-toggle-arrow" id="boss-filters-chevron">▼</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Filtros de Status / Chance -->
-                <div class="boss-filter-group-row">
-                    <span class="boss-filter-tag-title">Status:</span>
-                    <div class="boss-filter-chips">
-                        <button class="boss-status-btn active" onclick="setBossStatusFilter('all', this)">🌐 Todos</button>
-                        <button class="boss-status-btn filter-high" onclick="setBossStatusFilter('high', this)">🔥 Alta Chance</button>
-                        <button class="boss-status-btn filter-med" onclick="setBossStatusFilter('medium', this)">⚡ Média Chance</button>
-                        <button class="boss-status-btn filter-killed-today" onclick="setBossStatusFilter('killed_today', this)">💀 Mortos Hoje</button>
-                        <button class="boss-status-btn filter-killed-yesterday" onclick="setBossStatusFilter('killed_yesterday', this)">📅 Mortos Ontem</button>
-                        <button class="boss-status-btn filter-low" onclick="setBossStatusFilter('low', this)">⏳ Baixa Chance</button>
-                        <button class="boss-status-btn filter-checked" onclick="setBossStatusFilter('checked', this)">✅ Checados</button>
-                        <button class="boss-status-btn filter-unchecked" onclick="setBossStatusFilter('unchecked', this)">❌ Pendentes</button>
-                    </div>
-                </div>
-
-                <!-- Filtros de Categoria -->
-                <div class="boss-filter-group-row" style="margin-top: 10px;">
-                    <span class="boss-filter-tag-title">Categoria:</span>
-                    <div class="boss-filter-chips">
-                        <button class="boss-cat-btn active" onclick="setBossCategoryFilter('all', this)">Todos</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('vampire', this)">🧛 Vampire Lords</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('mount', this)">🐎 Montarias</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('archdemon', this)">👑 Archdemons & Raids</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('poi_inq', this)">🏰 PoI & Inquisition</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('nemesis', this)">💀 Nemesis Raros</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('mini', this)">🗡️ Mini Bosses</button>
-                        <button class="boss-cat-btn" onclick="setBossCategoryFilter('rookgaard', this)">🐣 Rookgaard</button>
-                    </div>
-                </div>
-
-                <!-- Contagem de Resultados e Toggle de Cooldown -->
+                <!-- Barra Sutil: Contagem de Resultados & Ocultar Cooldown -->
                 <div class="boss-results-count-bar">
                     <span id="boss-results-count" class="boss-results-count-text">Carregando bosses...</span>
                     <label class="boss-hide-blocked-label">
                         <input type="checkbox" id="boss-hide-blocked-toggle" checked onchange="toggleHideBlocked(this)">
                         <span>🔒 Ocultar bosses em Cooldown (0% hoje)</span>
                     </label>
+                </div>
+
+                <!-- Painel Avançado Recolhível (Oculto por Padrão) -->
+                <div id="boss-advanced-filters-collapse" class="boss-advanced-filters-collapse" style="display: none;">
+                    <!-- Barra de Estatísticas e Progresso do Servidor -->
+                    <div class="boss-stats-banner">
+                        <div class="boss-stat-item">
+                            <span class="boss-stat-num" id="stat-boss-total">0</span>
+                            <span class="boss-stat-title">Bosses Monitorados</span>
+                        </div>
+                        <div class="boss-stat-item">
+                            <span class="boss-stat-num highlight-high" id="stat-boss-high">0</span>
+                            <span class="boss-stat-title">Com Chance Hoje</span>
+                        </div>
+                        <div class="boss-stat-item">
+                            <span class="boss-stat-num highlight-killed" id="stat-boss-killed">0</span>
+                            <span class="boss-stat-title">Mortos Hoje</span>
+                        </div>
+                        <div class="boss-stat-item">
+                            <span class="boss-stat-num highlight-check" id="stat-boss-checked">0 / 0</span>
+                            <span class="boss-stat-title">Checados (Vivos)</span>
+                        </div>
+                        <div class="boss-stat-progress-box">
+                            <div class="boss-progress-label-row">
+                                <span>Progresso em <strong id="boss-current-server-name">Ustebra</strong>:</span>
+                                <span id="stat-boss-progress-percent" style="font-weight: 800; color: var(--gold);">0%</span>
+                            </div>
+                            <div class="boss-progress-track">
+                                <div id="stat-boss-progress-bar" class="boss-progress-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linha de Ações, Sincronização e Ordenação -->
+                    <div class="boss-advanced-actions-row">
+                        <div class="boss-sync-info-box">
+                            <div class="boss-sync-status-pill" id="boss-sync-status">
+                                <span class="sync-live-dot"></span>
+                                <span id="boss-sync-text">Auto-update: a cada 1h</span>
+                            </div>
+                            <span id="boss-last-sync-label" class="boss-last-sync-time">Última checagem: agora</span>
+                        </div>
+
+                        <div class="boss-sort-wrapper">
+                            <label class="boss-sort-label">Ordenar:</label>
+                            <select id="boss-sort-select" class="boss-sort-select">
+                                <option value="chance_desc">🔥 Maior Chance</option>
+                                <option value="chance_asc">⏳ Menor Chance</option>
+                                <option value="name_asc">🔤 Nome (A-Z)</option>
+                                <option value="last_seen_desc">📅 Última Aparição</option>
+                                <option value="checked_first">✅ Checados Primeiro</option>
+                            </select>
+                        </div>
+
+                        <div class="boss-quick-actions">
+                            <button class="btn-boss-action btn-sync-now" id="btn-sync-boss-data" onclick="manualSyncBossData()" title="Buscar estatísticas e atualizar dados agora">
+                                <span class="sync-icon">🔄</span> Atualizar Agora
+                            </button>
+                            <button class="btn-boss-action btn-copy-report" onclick="copyBossCheckReport()" title="Copiar relatório formatado para Discord/Guild">
+                                📋 Copiar Relatório
+                            </button>
+                            <button class="btn-boss-action btn-clear-checks" onclick="clearAllBossChecks()" title="Reiniciar todos os checks do dia">
+                                🧹 Limpar Checks
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filtros de Status / Chance -->
+                    <div class="boss-filter-group-row">
+                        <span class="boss-filter-tag-title">Status:</span>
+                        <div class="boss-filter-chips">
+                            <button class="boss-status-btn active" onclick="setBossStatusFilter('all', this)">🌐 Todos</button>
+                            <button class="boss-status-btn filter-high" onclick="setBossStatusFilter('high', this)">🔥 Alta Chance</button>
+                            <button class="boss-status-btn filter-med" onclick="setBossStatusFilter('medium', this)">⚡ Média Chance</button>
+                            <button class="boss-status-btn filter-killed-today" onclick="setBossStatusFilter('killed_today', this)">💀 Mortos Hoje</button>
+                            <button class="boss-status-btn filter-killed-yesterday" onclick="setBossStatusFilter('killed_yesterday', this)">📅 Mortos Ontem</button>
+                            <button class="boss-status-btn filter-low" onclick="setBossStatusFilter('low', this)">⏳ Baixa Chance</button>
+                            <button class="boss-status-btn filter-checked" onclick="setBossStatusFilter('checked', this)">✅ Checados</button>
+                            <button class="boss-status-btn filter-unchecked" onclick="setBossStatusFilter('unchecked', this)">❌ Pendentes</button>
+                        </div>
+                    </div>
+
+                    <!-- Filtros de Categoria -->
+                    <div class="boss-filter-group-row" style="margin-top: 10px;">
+                        <span class="boss-filter-tag-title">Categoria:</span>
+                        <div class="boss-filter-chips">
+                            <button class="boss-cat-btn active" onclick="setBossCategoryFilter('all', this)">Todos</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('vampire', this)">🧛 Vampire Lords</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mount', this)">🐎 Montarias</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('archdemon', this)">👑 Archdemons & Raids</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('poi_inq', this)">🏰 PoI & Inquisition</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('nemesis', this)">💀 Nemesis Raros</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mini', this)">🗡️ Mini Bosses</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('rookgaard', this)">🐣 Rookgaard</button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -1202,17 +1216,142 @@ Player2:
             </div>
 
         </div>
+    </div> <!-- FIM DA ABA 3 -->
+
+    <!-- ABA 4: MAPA INTERATIVO (TIBIAMAPS) -->
+    <div id="tab-map" class="tab-content" style="display: none;">
+        <div class="container map-tab-container">
+
+            <!-- Barra de Ferramentas e Camadas do Mapa (Acesso rápido e limpo) -->
+            <div class="map-advanced-toggle-bar">
+                <button type="button" class="btn-toggle-advanced" id="btn-toggle-map-tools" onclick="toggleMapAdvancedTools()">
+                    <span class="btn-toggle-icon">⚙️</span>
+                    <span class="btn-toggle-text">Ferramentas & Busca XYZ</span>
+                    <span class="btn-toggle-arrow" id="map-tools-chevron">▼</span>
+                </button>
+
+                <!-- Atalhos rápidos de camadas -->
+                <div class="map-quick-layer-toggles">
+                    <button class="map-quick-toggle-btn btn-clear-all-quick" onclick="clearAllCustomMarkers()" title="Limpar todos os marcadores personalizados criados">
+                        🗑️ Limpar Marcadores
+                    </button>
+                </div>
+            </div>
+
+            <!-- Painel Superior de Ferramentas Avançadas (Inicia Oculto) -->
+            <section class="map-controls-panel" id="map-controls-panel" style="display: none;">
+                <div class="map-controls-row">
+
+                    <!-- Busca e Leitura de Coordenadas X, Y, Z -->
+                    <div class="map-coords-box">
+                        <div class="map-coords-hud">
+                            <span class="map-control-title">📍 Coordenadas do Cursor:</span>
+                            <span class="map-coords-value-badge" id="map-cursor-coords">X: 32347 | Y: 32226 | Z: 7 (0)</span>
+                        </div>
+                        <div class="map-coords-search-row">
+                            <input type="number" id="input-map-x" class="map-coord-input" placeholder="X (ex: 32347)" value="32347">
+                            <input type="number" id="input-map-y" class="map-coord-input" placeholder="Y (ex: 32226)" value="32226">
+                            <input type="number" id="input-map-z" class="map-coord-input" placeholder="Z (0-15)" value="7" min="0" max="15">
+                            <button class="btn-map-action btn-jump-coords" onclick="jumpToMapCoordinate(document.getElementById('input-map-x').value, document.getElementById('input-map-y').value, document.getElementById('input-map-z').value)">
+                                📍 Ir
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ferramentas e Filtros de Visualização -->
+                    <div class="map-tools-box">
+                        <span class="map-control-title">🛠️ Camadas & Filtros:</span>
+                        <div class="map-tools-chips">
+                            <button class="map-tool-btn" id="btn-toggle-grid" onclick="toggleMapGrid()">
+                                📐 Grid 256
+                            </button>
+                            <button class="map-tool-btn" onclick="toggleMapFullscreen()">
+                                ⛶ Tela Cheia
+                            </button>
+                            <button class="map-tool-btn delete-all" onclick="clearAllCustomMarkers()" title="Excluir todos os marcadores personalizados criados">
+                                🗑️ Limpar Marcadores
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Container Principal da Viewport do Mapa -->
+            <section class="tibia-map-wrapper" id="tibia-map-wrapper">
+                
+                <!-- Controles Flutuantes de Zoom (canto inferior direito) -->
+                <div class="map-floating-zoom-controls">
+                    <button class="map-zoom-btn" onclick="mapZoomIn()" title="Aproximar (+)">+</button>
+                    <span class="map-zoom-indicator" id="map-zoom-label">1x</span>
+                    <button class="map-zoom-btn" onclick="mapZoomOut()" title="Afastar (-)">−</button>
+                </div>
+
+                <!-- Controles Flutuantes de Andar (Estilo TibiaMaps: Minimalista & Limpo) -->
+                <div class="map-tibiamaps-controls">
+                    <div class="map-tibiamaps-group">
+                        <button class="map-tm-btn" onclick="mapFloorUp()" title="Subir andar (▲ / K / PageUp)">▲</button>
+                        <button class="map-tm-floor" id="map-floor-float-label" onclick="setMapFloor(7)" title="Andar relativo (0 = Térreo). Clique para resetar ao Térreo.">0</button>
+                        <button class="map-tm-btn" onclick="mapFloorDown()" title="Descer andar (▼ / J / PageDown)">▼</button>
+                    </div>
+                </div>
+
+                <!-- HUD Superior Direito: Coordenadas do Cursor -->
+                <div class="map-floating-cursor-hud">
+                    <span>Cursor: <strong id="map-cursor-coords-float">32347, 32226, 7</strong></span>
+                </div>
+
+                <!-- Dica de Duplo Clique -->
+                <div class="map-hint-badge">
+                    <span>💡 Clique e arraste para navegar · Scroll para zoom · Duplo clique para marcador</span>
+                </div>
+
+                <!-- Canvas Viewport -->
+                <div class="tibia-map-container" id="tibia-map-container">
+                    <canvas id="tibia-map-canvas"></canvas>
+                </div>
+
+                <!-- Tooltip Flutuante de Boss -->
+                <div id="map-boss-tooltip" class="map-boss-tooltip" style="display: none;">
+                    <div class="map-tooltip-header">
+                        <img src="imagens/Compass.gif" alt="" class="map-tooltip-img">
+                        <div>
+                            <h4 class="map-tooltip-name">Boss Name</h4>
+                            <span class="map-tooltip-cat">Categoria</span>
+                        </div>
+                        <button class="map-tooltip-close" onclick="document.getElementById('map-boss-tooltip').style.display='none'">×</button>
+                    </div>
+                    <div class="map-tooltip-body">
+                        <span class="map-tooltip-coords">X: 0 | Y: 0 | Z: 7 (0)</span>
+                    </div>
+                </div>
+
+                <!-- Tooltip de Marcador Personalizado com botão de excluir -->
+                <div id="map-custom-marker-tooltip" class="map-boss-tooltip" style="display: none;">
+                    <div class="map-tooltip-header">
+                        <span style="font-size: 1.2rem;">📍</span>
+                        <div>
+                            <h4 class="map-tooltip-name" id="custom-marker-name">Marcador</h4>
+                            <span class="map-tooltip-cat">Marcador Personalizado</span>
+                        </div>
+                        <button class="map-tooltip-close" onclick="document.getElementById('map-custom-marker-tooltip').style.display='none'">×</button>
+                    </div>
+                    <div class="map-tooltip-body" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 6px;">
+                        <span class="map-tooltip-coords" id="custom-marker-coords">X: 0 | Y: 0 | Z: 7 (0)</span>
+                        <button class="btn-delete-marker" id="btn-delete-custom-marker" title="Excluir este marcador">🗑️ Excluir</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
     </div>
 
-
     <!-- Footer -->
-
-
     <footer>
         <div class="container">
             <p>Desenvolvido com carinho para a comunidade tibiana. Os preços de itens mudam de servidor para servidor.</p>
             <p style="margin-top:5px; font-size:0.85rem;">Esta página foi criada por <a href="https://www.twitch.tv/andychrono" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700; text-decoration:underline;">Andy Chrono</a>.</p>
-            <p style="margin-top:5px;">Tibia é uma marca registrada da <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>.</p>
+            <p style="margin-top:5px;">Tibia é uma marca registrada da <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>. Dados do mapa providos por <a href="https://tibiamaps.io" target="_blank" rel="noopener" style="color:var(--gold);">TibiaMaps.io</a>.</p>
         </div>
     </footer>
 
@@ -1224,5 +1363,6 @@ Player2:
 
     <script src="app.js"></script>
     <script src="boss-tracker.js"></script>
+    <script src="tibia-map.js"></script>
 </body>
 </html>
