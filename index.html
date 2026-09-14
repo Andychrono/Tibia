@@ -66,7 +66,7 @@
             <!-- ═══════════════════════════════════════════════════ -->
             <!--  OFENSIVOS PRINCIPAIS                               -->
             <!-- ═══════════════════════════════════════════════════ -->
-            <h2 class="section-group-heading"><span>⚔️ Ofensivos Principais</span></h2>
+            <h2 class="section-group-heading"><span><img src="imagens/Magic_Longsword.gif" alt="Magic Long Sword" class="heading-item-icon"> Ofensivos Principais</span></h2>
             <section class="imbuements-grid">
 
                 <!-- Void -->
@@ -185,7 +185,7 @@
             <!-- ═══════════════════════════════════════════════════ -->
             <!--  ELEMENTAL OFENSIVOS                                -->
             <!-- ═══════════════════════════════════════════════════ -->
-            <h2 class="section-group-heading"><span>🔥 Elemental Ofensivos</span></h2>
+            <h2 class="section-group-heading"><span><img src="imagens/Fire_Sword.gif" alt="Fire Sword" class="heading-item-icon"> Elemental Ofensivos</span></h2>
             <section class="imbuements-grid">
 
                 <!-- Scorch -->
@@ -378,7 +378,7 @@
             <!-- ═══════════════════════════════════════════════════ -->
             <!--  PROTEÇÕES ELEMENTAIS                               -->
             <!-- ═══════════════════════════════════════════════════ -->
-            <h2 class="section-group-heading"><span>🛡️ Proteções Elementais</span></h2>
+            <h2 class="section-group-heading"><span><img src="imagens/Blessed_Shield.gif" alt="Blessed Shield" class="heading-item-icon"> Proteções Elementais</span></h2>
             <section class="imbuements-grid">
 
                 <!-- Lich Shroud -->
@@ -645,7 +645,7 @@
             <!-- ═══════════════════════════════════════════════════ -->
             <!--  HABILIDADES & UTILIDADES                           -->
             <!-- ═══════════════════════════════════════════════════ -->
-            <h2 class="section-group-heading"><span>📈 Habilidades &amp; Utilidades</span></h2>
+            <h2 class="section-group-heading"><span><img src="imagens/Boots_of_Haste.gif" alt="Boots of Haste" class="heading-item-icon"> Habilidades &amp; Utilidades</span></h2>
             <section class="imbuements-grid">
 
                 <!-- Epiphany -->
@@ -958,7 +958,7 @@
                 <!-- Coluna da Esquerda: Entrada de Dados e Histórico -->
                 <div class="loot-sidebar">
                     <section class="loot-card">
-                        <h2 class="card-heading">📋 Log da Hunt (Party Hunt Analyser)</h2>
+                        <h2 class="card-heading"><img src="imagens/Blank_Parchment.gif" alt="Log" class="heading-item-icon"> Log da Hunt (Party Hunt Analyser)</h2>
                         <p class="card-sub">Cole os dados do Analisador de Hunt do Tibia aqui:</p>
                         
                         <textarea id="loot-log-input" class="loot-textarea" placeholder="Cole o log da hunt aqui...
@@ -983,7 +983,7 @@ Player2:
                     <!-- Histórico de Hunts -->
                     <section class="loot-card history-section">
                         <div class="history-header">
-                            <h2 class="card-heading">⏳ Histórico de Hunts</h2>
+                            <h2 class="card-heading"><img src="imagens/Tome_of_Knowledge.gif" alt="Histórico" class="heading-item-icon"> Histórico de Hunts</h2>
                             <button id="btn-clear-history" class="btn-danger-text">Limpar Histórico</button>
                         </div>
                         <div id="hunt-history-list" class="history-list">
@@ -1016,7 +1016,7 @@ Player2:
 
                     <!-- Divisão das Transferências Bancárias -->
                     <section class="loot-card results-card" id="loot-results-panel" style="display: none;">
-                        <h2 class="card-heading">💸 Transferências Bancárias Necessárias</h2>
+                        <h2 class="card-heading"><img src="imagens/Crystal_Coin.gif" alt="" class="heading-item-icon"> Transferências Bancárias Necessárias</h2>
                         <p class="card-sub">Copie os comandos bancários abaixo para transferir no jogo:</p>
                         
                         <!-- Resumo Textual do Split (Lucro, Tempo e Dano) -->
@@ -1031,7 +1031,7 @@ Player2:
 
                     <!-- Lista Detalhada de Jogadores -->
                     <section class="loot-card results-card" id="loot-details-panel" style="display: none;">
-                        <h2 class="card-heading">👥 Detalhamento por Jogador</h2>
+                        <h2 class="card-heading"><img src="imagens/Party_Hat.gif" alt="" class="heading-item-icon"> Detalhamento por Jogador</h2>
                         
                         <div class="table-responsive">
                             <table class="players-table">
@@ -1162,10 +1162,10 @@ Player2:
                                 <span class="sync-icon">🔄</span> Atualizar Agora
                             </button>
                             <button class="btn-boss-action btn-copy-report" onclick="copyBossCheckReport()" title="Copiar relatório formatado para Discord/Guild">
-                                📋 Copiar Relatório
+                                <img src="imagens/Blank_Parchment.gif" alt="" class="filter-item-icon"> Copiar Relatório
                             </button>
                             <button class="btn-boss-action btn-clear-checks" onclick="clearAllBossChecks()" title="Reiniciar todos os checks do dia">
-                                🧹 Limpar Checks
+                                <img src="imagens/Skull.gif" alt="" class="filter-item-icon"> Limpar Checks
                             </button>
                         </div>
                     </div>
@@ -1174,17 +1174,17 @@ Player2:
                     <div class="boss-filter-group-row">
                         <span class="boss-filter-tag-title">Status:</span>
                         <div class="boss-filter-chips">
-                            <button class="boss-status-btn active" onclick="setBossStatusFilter('all', this)">🌐 Todos</button>
-                            <button class="boss-status-btn filter-high" onclick="setBossStatusFilter('high', this)">🔥 Alta Chance</button>
-                            <button class="boss-status-btn filter-med" onclick="setBossStatusFilter('medium', this)">⚡ Média Chance</button>
-                            <button class="boss-status-btn filter-noprediction" onclick="setBossStatusFilter('no_prediction', this)">❓ Sem Previsão</button>
-                            <button class="boss-status-btn filter-world" onclick="setBossStatusFilter('world', this)">🌍 World Chance</button>
-                            <button class="boss-status-btn filter-rook" onclick="setBossStatusFilter('rookgaard', this)">🐣 Rookgaard</button>
-                            <button class="boss-status-btn filter-killed-today" onclick="setBossStatusFilter('killed_today', this)">💀 Mortos Hoje</button>
-                            <button class="boss-status-btn filter-killed-yesterday" onclick="setBossStatusFilter('killed_yesterday', this)">📅 Mortos Ontem</button>
-                            <button class="boss-status-btn filter-low" onclick="setBossStatusFilter('low', this)">⏳ Baixa Chance</button>
-                            <button class="boss-status-btn filter-checked" onclick="setBossStatusFilter('checked', this)">✅ Checados</button>
-                            <button class="boss-status-btn filter-unchecked" onclick="setBossStatusFilter('unchecked', this)">❌ Pendentes</button>
+                            <button class="boss-status-btn active" onclick="setBossStatusFilter('all', this)"><img src="imagens/Compass.gif" class="filter-item-icon" alt=""> Todos</button>
+                            <button class="boss-status-btn filter-high" onclick="setBossStatusFilter('high', this)"><img src="imagens/Fire_Sword.gif" class="filter-item-icon" alt=""> Alta Chance</button>
+                            <button class="boss-status-btn filter-med" onclick="setBossStatusFilter('medium', this)"><img src="imagens/Mystical_Hourglass.gif" class="filter-item-icon" alt=""> Média Chance</button>
+                            <button class="boss-status-btn filter-noprediction" onclick="setBossStatusFilter('no_prediction', this)"><img src="imagens/Tome_of_Knowledge.gif" class="filter-item-icon" alt=""> Sem Previsão</button>
+                            <button class="boss-status-btn filter-world" onclick="setBossStatusFilter('world', this)"><img src="imagens/Thunder_Hammer.gif" class="filter-item-icon" alt=""> World Chance</button>
+                            <button class="boss-status-btn filter-rook" onclick="setBossStatusFilter('rookgaard', this)"><img src="imagens/munster.gif" class="filter-item-icon" alt=""> Rookgaard</button>
+                            <button class="boss-status-btn filter-killed-today" onclick="setBossStatusFilter('killed_today', this)"><img src="imagens/Skull.gif" class="filter-item-icon" alt=""> Mortos Hoje</button>
+                            <button class="boss-status-btn filter-killed-yesterday" onclick="setBossStatusFilter('killed_yesterday', this)"><img src="imagens/Black_Skull.gif" class="filter-item-icon" alt=""> Mortos Ontem</button>
+                            <button class="boss-status-btn filter-low" onclick="setBossStatusFilter('low', this)"><img src="imagens/Mystical_Hourglass.gif" class="filter-item-icon" alt=""> Baixa Chance</button>
+                            <button class="boss-status-btn filter-checked" onclick="setBossStatusFilter('checked', this)"><img src="imagens/Blessed_Wooden_Stake.gif" class="filter-item-icon" alt=""> Checados</button>
+                            <button class="boss-status-btn filter-unchecked" onclick="setBossStatusFilter('unchecked', this)"><img src="imagens/Copper_Key.gif" class="filter-item-icon" alt=""> Pendentes</button>
                         </div>
                     </div>
 
@@ -1192,14 +1192,14 @@ Player2:
                     <div class="boss-filter-group-row" style="margin-top: 10px;">
                         <span class="boss-filter-tag-title">Categoria:</span>
                         <div class="boss-filter-chips">
-                            <button class="boss-cat-btn active" onclick="setBossCategoryFilter('all', this)">Todos</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('archdemon', this)">🌍 World Chance (Raids)</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('rookgaard', this)">🐣 Rookgaard</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('vampire', this)">🧛 Vampire Lords</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mount', this)">🐎 Montarias</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('poi_inq', this)">🏰 PoI & Inquisition</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('nemesis', this)">💀 Nemesis Raros</button>
-                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mini', this)">🗡️ Mini Bosses</button>
+                            <button class="boss-cat-btn active" onclick="setBossCategoryFilter('all', this)"><img src="imagens/Compass.gif" class="filter-item-icon" alt=""> Todos</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('archdemon', this)"><img src="imagens/Thunder_Hammer.gif" class="filter-item-icon" alt=""> World Chance (Raids)</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('rookgaard', this)"><img src="imagens/munster.gif" class="filter-item-icon" alt=""> Rookgaard</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('vampire', this)"><img src="imagens/Vampire_Teeth.gif" class="filter-item-icon" alt=""> Vampire Lords</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mount', this)"><img src="imagens/undead_cavebear.gif" class="filter-item-icon" alt=""> Montarias</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('poi_inq', this)"><img src="imagens/Demon_Horn.gif" class="filter-item-icon" alt=""> PoI &amp; Inquisition</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('nemesis', this)"><img src="imagens/Magic_Longsword.gif" class="filter-item-icon" alt=""> Nemesis Raros</button>
+                            <button class="boss-cat-btn" onclick="setBossCategoryFilter('mini', this)"><img src="imagens/Silver_Raid_Token.gif" class="filter-item-icon" alt=""> Mini Bosses</button>
                         </div>
                     </div>
                 </div>

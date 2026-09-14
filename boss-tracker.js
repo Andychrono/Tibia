@@ -2035,14 +2035,14 @@ function generateBossCardHTML(boss) {
 
         <div class="boss-details-grid">
             <div class="boss-detail-row">
-                <span class="boss-detail-label">📍 Local:</span>
+                <span class="boss-detail-label"><img src="imagens/Compass.gif" class="card-inline-icon" alt=""> Local:</span>
                 <span class="boss-detail-value boss-location-link" onclick="openBossOnMap('${boss.id}')" title="Clique para abrir e centralizar no Mapa Interativo">
                     <span>${boss.location}</span>
-                    <span class="boss-map-badge">🗺️ Ver no Mapa</span>
+                    <span class="boss-map-badge"><img src="imagens/Compass.gif" class="card-inline-icon" alt=""> Ver no Mapa</span>
                 </span>
             </div>
             <div class="boss-detail-row">
-                <span class="boss-detail-label">⏳ Status:</span>
+                <span class="boss-detail-label"><img src="imagens/Mystical_Hourglass.gif" class="card-inline-icon" alt=""> Status:</span>
                 <span class="boss-detail-value">
                     ${boss.isKilledToday 
                         ? `<strong>Morto hoje às ${boss.killTime}</strong> (Entrou em Cooldown)` 
@@ -2054,7 +2054,7 @@ function generateBossCardHTML(boss) {
                 </span>
             </div>
             <div class="boss-detail-row">
-                <span class="boss-detail-label">💎 Loots:</span>
+                <span class="boss-detail-label"><img src="imagens/Crystal_Coin.gif" class="card-inline-icon" alt=""> Loots:</span>
                 <span class="boss-detail-value highlight-gold">${boss.drops}</span>
             </div>
         </div>
@@ -2062,7 +2062,7 @@ function generateBossCardHTML(boss) {
         <div class="boss-card-footer">
             ${boss.isKilledToday ? `
             <div class="boss-check-status killed">
-                <span>💀 Morto às <strong>${boss.killTime}</strong></span>
+                <span><img src="imagens/Skull.gif" class="card-inline-icon" alt=""> Morto às <strong>${boss.killTime}</strong></span>
             </div>
             <div class="boss-card-actions">
                 <button class="btn-boss-undo-kill" onclick="undoBossKill('${boss.id}')" title="Desfazer registro de morte">
@@ -2071,14 +2071,14 @@ function generateBossCardHTML(boss) {
             </div>
             ` : `
             <div class="boss-check-status ${isChecked ? 'checked' : 'pending'}">
-                ${isChecked ? `<span>🕒 Checado às <strong>${checkData.time}</strong></span>` : `<span>${boss.chancePercent > 0 ? 'Pendente' : 'Fora da janela'}</span>`}
+                ${isChecked ? `<span><img src="imagens/Blessed_Wooden_Stake.gif" class="card-inline-icon" alt=""> Checado às <strong>${checkData.time}</strong></span>` : `<span>${boss.chancePercent > 0 ? 'Pendente' : 'Fora da janela'}</span>`}
             </div>
             <div class="boss-card-actions">
                 <button class="btn-boss-check-action ${isChecked ? 'checked' : ''}" onclick="toggleBossCheck('${boss.id}')" title="${isChecked ? 'Desmarcar verificação' : 'Marcar como verificado'}">
-                    <span>${isChecked ? '✅ Checado' : '⏱️ Check'}</span>
+                    <span>${isChecked ? '<img src="imagens/Blessed_Wooden_Stake.gif" class="card-inline-icon" alt=""> Checado' : '<img src="imagens/Blessed_Wooden_Stake.gif" class="card-inline-icon" alt=""> Check'}</span>
                 </button>
                 <button class="btn-boss-kill-action" onclick="markBossAsKilled('${boss.id}')" title="Registrar que o boss foi morto hoje no servidor">
-                    <span>💀 Morto</span>
+                    <span><img src="imagens/Skull.gif" class="card-inline-icon" alt=""> Morto</span>
                 </button>
             </div>
             `}
@@ -2133,7 +2133,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-today">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">🔥</span>
+                    <img src="imagens/Fire_Sword.gif" class="boss-section-icon-img" alt="Chance Hoje">
                     <h2>Bosses com Chance Hoje (Mainland)</h2>
                     <span class="boss-section-badge">${mainlandActive.length} bosses ativos</span>
                 </div>
@@ -2152,7 +2152,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-noprediction">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">❓</span>
+                    <img src="imagens/Tome_of_Knowledge.gif" class="boss-section-icon-img" alt="Sem Previsão">
                     <h2>Bosses Sem Previsão (Spawns Aleatórios & Invasões)</h2>
                     <span class="boss-section-badge noprediction">${noPredBosses.length} bosses</span>
                 </div>
@@ -2171,7 +2171,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-world">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">🌍</span>
+                    <img src="imagens/Thunder_Hammer.gif" class="boss-section-icon-img" alt="World Chance">
                     <h2>World Bosses & Raids Globais (World Chance)</h2>
                     <span class="boss-section-badge world">${worldChanceBosses.length} raids globais</span>
                 </div>
@@ -2190,7 +2190,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-rook">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">🐣</span>
+                    <img src="imagens/munster.gif" class="boss-section-icon-img" alt="Rookgaard">
                     <h2>Bosses de Rookgaard</h2>
                     <span class="boss-section-badge rook">${rookgaardBosses.length} bosses</span>
                 </div>
@@ -2209,7 +2209,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-killed">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">💀</span>
+                    <img src="imagens/Skull.gif" class="boss-section-icon-img" alt="Mortos Hoje">
                     <h2>Bosses Mortos Hoje (${bossTrackerState.selectedWorld})</h2>
                     <span class="boss-section-badge killed">${killedToday.length} mortos hoje</span>
                 </div>
@@ -2228,7 +2228,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header highlight-yesterday">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">📅</span>
+                    <img src="imagens/Black_Skull.gif" class="boss-section-icon-img" alt="Mortos Ontem">
                     <h2>Mortos no Dia Anterior (Ontem)</h2>
                     <span class="boss-section-badge yesterday">${killedYesterday.length} bosses</span>
                 </div>
@@ -2247,7 +2247,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">⏳</span>
+                    <img src="imagens/Mystical_Hourglass.gif" class="boss-section-icon-img" alt="Baixa Chance">
                     <h2>Baixa Chance (Entrando na Janela em Breve)</h2>
                     <span class="boss-section-badge low">${lowBosses.length} bosses</span>
                 </div>
@@ -2266,7 +2266,7 @@ function renderBossCards() {
         <section class="boss-section-block">
             <div class="boss-section-header">
                 <div class="boss-section-title">
-                    <span class="boss-section-icon">🔒</span>
+                    <img src="imagens/Copper_Key.gif" class="boss-section-icon-img" alt="Bloqueados">
                     <h2>Bloqueados / Em Cooldown (Sem Chance Hoje)</h2>
                     <span class="boss-section-badge blocked">${blockedBosses.length} bosses</span>
                 </div>

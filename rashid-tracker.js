@@ -25,23 +25,23 @@ const RASHID_SCHEDULE = [
         dayName: "Terça-feira",
         city: "Liberty Bay",
         location: "Taverna de Lyonel (oeste)",
-        coords: { x: 32316, y: 32825, z: 7 },
-        note: "A sudoeste do depot, na taverna de Lyonel."
+        coords: { x: 32302, y: 32835, z: 7 },
+        note: "A esquerda do depot, na taverna de Lyonel."
     },
     {
         dayIndex: 3,
         dayName: "Quarta-feira",
         city: "Port Hope",
         location: "Taverna de Clyde (ao norte)",
-        coords: { x: 32626, y: 32740, z: 7 },
-        note: "Ao norte do depot de Port Hope, na taverna de Clyde."
+        coords: { x: 32578, y: 32756, z: 7 },
+        note: "A esquerda do Templo, na taverna de Clyde."
     },
     {
         dayIndex: 4,
         dayName: "Quinta-feira",
         city: "Ankrahmun",
         location: "Taverna do Arito (andar +1)",
-        coords: { x: 33063, y: 32867, z: 6 },
+        coords: { x: 33066, y: 32877, z: 6 },
         note: "Acima do bar do Arito, no primeiro andar."
     },
     {
@@ -57,7 +57,7 @@ const RASHID_SCHEDULE = [
         dayName: "Sábado",
         city: "Edron",
         location: "Taverna de Mirabell (acima do depot, +1)",
-        coords: { x: 33235, y: 31782, z: 6 },
+        coords: { x: 33168, y: 31810, z: 6 },
         note: "No andar superior do castelo de Edron, acima do depot."
     }
 ];

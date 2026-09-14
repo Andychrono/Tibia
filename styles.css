@@ -630,6 +630,52 @@ h1, h2, h3, h4, .font-title {
     padding: 0 18px;
     position: relative;
     z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ícones de Itens Oficiais do Tibia para Cabeçalhos, Filtros e Botões */
+.heading-item-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.45));
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.filter-item-icon,
+.btn-item-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    vertical-align: middle;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+.boss-section-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.45));
+    flex-shrink: 0;
+}
+
+.card-inline-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 2px;
 }
 
 /* Footer style */
