@@ -2347,6 +2347,77 @@ footer a:hover {
     color: hsl(280, 75%, 75%);
 }
 
+/* Estilos de Status & Badges: Sem Previsão, World Chance & Rookgaard */
+.badge-chance-noprediction {
+    background: rgba(52, 152, 219, 0.15);
+    border-color: hsla(204, 80%, 55%, 0.4);
+    color: hsl(204, 90%, 68%);
+}
+
+.boss-section-header.highlight-noprediction {
+    border-bottom-color: hsla(204, 80%, 55%, 0.35);
+}
+
+.boss-section-badge.noprediction {
+    background: rgba(52, 152, 219, 0.18);
+    border-color: hsla(204, 80%, 55%, 0.45);
+    color: hsl(204, 90%, 70%);
+}
+
+.badge-chance-world {
+    background: rgba(155, 89, 182, 0.18);
+    border-color: hsla(280, 80%, 65%, 0.45);
+    color: hsl(280, 85%, 75%);
+}
+
+.boss-section-header.highlight-world {
+    border-bottom-color: hsla(280, 80%, 65%, 0.4);
+}
+
+.boss-section-badge.world {
+    background: rgba(155, 89, 182, 0.2);
+    border-color: hsla(280, 80%, 65%, 0.45);
+    color: hsl(280, 85%, 75%);
+}
+
+.badge-chance-rook {
+    background: rgba(230, 126, 34, 0.18);
+    border-color: hsla(35, 95%, 55%, 0.45);
+    color: hsl(35, 95%, 65%);
+}
+
+.boss-section-header.highlight-rook {
+    border-bottom-color: hsla(35, 95%, 55%, 0.4);
+}
+
+.boss-section-badge.rook {
+    background: rgba(230, 126, 34, 0.2);
+    border-color: hsla(35, 95%, 55%, 0.45);
+    color: hsl(35, 95%, 65%);
+}
+
+.boss-status-btn.filter-noprediction:hover,
+.boss-status-btn.filter-noprediction.active {
+    background: rgba(52, 152, 219, 0.22);
+    border-color: hsl(204, 85%, 60%);
+    color: hsl(204, 90%, 75%);
+}
+
+.boss-status-btn.filter-world:hover,
+.boss-status-btn.filter-world.active {
+    background: rgba(155, 89, 182, 0.22);
+    border-color: hsl(280, 85%, 65%);
+    color: hsl(280, 85%, 80%);
+}
+
+.boss-status-btn.filter-rook:hover,
+.boss-status-btn.filter-rook.active {
+    background: rgba(230, 126, 34, 0.22);
+    border-color: hsl(35, 95%, 55%);
+    color: hsl(35, 95%, 70%);
+}
+
+
 /* ============================================================
    MAPA INTERATIVO (TIBIAMAPS) — ABA 4
    ============================================================ */
@@ -2821,49 +2892,76 @@ footer a:hover {
     pointer-events: none;
 }
 
-/* Tooltip Flutuante de Boss */
+/* Tooltip Flutuante de Boss / NPC (Compacto e Elegante) */
 .map-boss-tooltip {
     position: absolute;
-    background: rgba(20, 24, 32, 0.96);
-    border: 1px solid var(--gold);
-    border-radius: var(--radius-md);
-    padding: 10px 14px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 12px var(--gold-glow);
-    z-index: 20;
+    background: rgba(18, 15, 12, 0.96);
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 6px 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 10px rgba(212, 175, 55, 0.25);
+    z-index: 25;
     transform: translate(-50%, -100%);
     pointer-events: auto;
-    min-width: 180px;
-    animation: scaleIn 0.2s ease-out;
+    min-width: 140px;
+    max-width: 220px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: scaleIn 0.15s ease-out;
+}
+
+/* Seta indicadora apontando diretamente para o X embaixo */
+.map-boss-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px 5px 0 5px;
+    border-style: solid;
+    border-color: var(--gold) transparent transparent transparent;
 }
 
 .map-tooltip-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 6px;
-    margin-bottom: 6px;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .map-tooltip-img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     image-rendering: pixelated;
+    flex-shrink: 0;
+}
+
+.map-tooltip-title-wrap {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .map-tooltip-name {
     font-family: var(--font-title);
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: var(--gold-light, #ffd700);
     margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .map-tooltip-cat {
-    font-size: 0.7rem;
-    color: var(--gold);
+    font-size: 0.65rem;
+    color: var(--text-muted);
     font-weight: 600;
+    line-height: 1.1;
 }
 
 .map-tooltip-close {
@@ -2871,17 +2969,34 @@ footer a:hover {
     background: transparent;
     border: none;
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 0.85rem;
     cursor: pointer;
+    line-height: 1;
+    padding: 0 2px;
 }
 
 .map-tooltip-close:hover {
     color: hsl(0, 85%, 60%);
 }
 
+.map-tooltip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.map-tooltip-loc {
+    font-size: 0.68rem;
+    color: #e0e0e0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .map-tooltip-coords {
     font-family: monospace;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     color: hsl(140, 80%, 65%);
     font-weight: 700;
 }
@@ -2917,6 +3032,557 @@ footer a:hover {
     color: #000;
     box-shadow: 0 0 8px var(--gold-glow);
 }
+
+/* ============================================================
+   CLASSES FALTANTES — CORREÇÃO DE AUDITORIA
+   ============================================================ */
+
+/* Divisor de Loot: variantes coloridas dos stat cards */
+.summary-stat.loot-total {
+    border-color: rgba(212, 175, 55, 0.25);
+}
+.summary-stat.loot-total .stat-value {
+    color: var(--gold-light);
+}
+
+.summary-stat.supplies-total {
+    border-color: rgba(231, 76, 60, 0.25);
+}
+.summary-stat.supplies-total .stat-value {
+    color: hsl(0, 85%, 65%);
+}
+
+.summary-stat.balance-total {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.summary-stat.share-total {
+    border-color: rgba(46, 204, 113, 0.3);
+}
+.summary-stat.share-total .stat-value {
+    color: hsl(140, 70%, 55%);
+}
+
+/* Divisor de Loot: cards de resultados (transferências + detalhamento) */
+.results-card {
+    margin-top: 20px;
+}
+
+/* Calculadora Imbui: container de economia gerado via JS */
+.savings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+}
+
+/* Check Boss: filtros de status sem cores específicas */
+.boss-status-btn.filter-med:hover {
+    border-color: hsl(45, 90%, 55%);
+    color: hsl(45, 90%, 65%);
+}
+
+.boss-status-btn.filter-low:hover {
+    border-color: hsl(210, 70%, 60%);
+    color: hsl(210, 70%, 70%);
+}
+
+.boss-status-btn.filter-unchecked:hover {
+    border-color: hsl(0, 60%, 55%);
+    color: hsl(0, 60%, 65%);
+}
+
+/* Check Boss: ícone de estrela e label do botão favoritar */
+.fav-star-icon {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+.btn-favorite-world:hover .fav-star-icon {
+    transform: scale(1.2);
+}
+
+.fav-btn-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Botão de toggle (boss avançado + ferramentas do mapa): texto interno */
+.btn-toggle-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Mapa Interativo: botão de ir para coordenadas */
+.btn-map-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.btn-map-action:hover {
+    background: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Mapa Interativo: corpo do tooltip de boss/marcador */
+.map-tooltip-body {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================================================
+   WIDGET DO RASHID — CANTO ESQUERDO DO SITE
+   ============================================================ */
+.rashid-floating-widget {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 990;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, #1a1613 85%);
+    border: 2px solid var(--gold, #d4af37);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 16px rgba(212, 175, 55, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                gap 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+    user-select: none;
+    animation: rashidPulseFloat 3.5s infinite ease-in-out;
+}
+
+@keyframes rashidPulseFloat {
+    0%, 100% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 14px rgba(212, 175, 55, 0.3);
+        transform: translateY(0);
+    }
+    50% {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75), 0 0 22px rgba(212, 175, 55, 0.55);
+        transform: translateY(-4px);
+    }
+}
+
+/* Estado Expandido (ao passar o mouse por cima) */
+.rashid-floating-widget:hover,
+.rashid-floating-widget:focus-within,
+.rashid-floating-widget.expanded {
+    width: 275px;
+    height: 154px;
+    border-radius: 14px;
+    padding: 12px 14px;
+    gap: 10px;
+    background: linear-gradient(145deg, #25201b, #191613);
+    border: 1.5px solid rgba(212, 175, 55, 0.75);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 28px rgba(212, 175, 55, 0.35);
+    animation: none;
+    transform: translateY(-2px);
+}
+
+.rashid-widget-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    height: 100%;
+    transition: gap 0.3s ease;
+}
+
+.rashid-floating-widget:hover .rashid-widget-body,
+.rashid-floating-widget.expanded .rashid-widget-body {
+    height: auto;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.rashid-avatar-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rashid-floating-widget:hover .rashid-avatar-box,
+.rashid-floating-widget.expanded .rashid-avatar-box {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, rgba(0, 0, 0, 0.5) 80%);
+    border: 1.5px solid rgba(212, 175, 55, 0.55);
+    border-radius: 12px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.rashid-avatar-img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease;
+}
+
+.rashid-floating-widget:hover .rashid-avatar-img,
+.rashid-floating-widget.expanded .rashid-avatar-img {
+    transform: scale(1.06);
+}
+
+.rashid-live-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 11px;
+    height: 11px;
+    background: #2ecc71;
+    border: 2px solid #191613;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #2ecc71;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.rashid-floating-widget:hover .rashid-live-dot,
+.rashid-floating-widget.expanded .rashid-live-dot {
+    bottom: -1px;
+    right: -1px;
+}
+
+.rashid-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+}
+
+.rashid-floating-widget:hover .rashid-info-box,
+.rashid-floating-widget.expanded .rashid-info-box {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition: opacity 0.3s ease 0.08s, transform 0.3s ease 0.08s;
+}
+
+.rashid-header-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rashid-badge-tag {
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.rashid-day-text {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.rashid-city-line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rashid-pin-icon {
+    font-size: 0.85rem;
+}
+
+.rashid-city-text {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.rashid-loc-line {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.rashid-widget-actions {
+    display: flex;
+    gap: 6px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rashid-floating-widget:hover .rashid-widget-actions,
+.rashid-floating-widget.expanded .rashid-widget-actions {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: opacity 0.3s ease 0.12s, transform 0.3s ease 0.12s;
+}
+
+.btn-rashid-action {
+    flex: 1;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.btn-rashid-action:hover {
+    background: rgba(212, 175, 55, 0.28);
+    border-color: var(--gold);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+/* Modal da Agenda Semanal do Rashid */
+.rashid-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.rashid-modal-card {
+    background: linear-gradient(145deg, #241f1a, #161311);
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+    overflow: hidden;
+}
+
+.rashid-modal-header {
+    padding: 18px 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rashid-modal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.rashid-modal-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.rashid-modal-title-row h3 {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin: 0 0 3px 0;
+}
+
+.rashid-modal-title-row p {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.rashid-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0 6px;
+}
+
+.rashid-modal-close:hover {
+    color: #fff;
+}
+
+.rashid-schedule-list {
+    padding: 14px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+.rashid-schedule-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.rashid-schedule-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.2);
+}
+
+.rashid-schedule-item.active-today {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: hsla(140, 80%, 45%, 0.45);
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.15);
+}
+
+.schedule-day-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 95px;
+}
+
+.schedule-day-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.schedule-today-tag {
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: hsl(140, 80%, 55%);
+    background: rgba(46, 204, 113, 0.2);
+    border: 1px solid hsla(140, 80%, 45%, 0.4);
+    padding: 1px 6px;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.schedule-city-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 10px;
+}
+
+.schedule-city-col strong {
+    font-size: 0.92rem;
+    color: var(--gold-light);
+}
+
+.schedule-loc-desc {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+
+.btn-schedule-jump {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    color: var(--gold-light);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-schedule-jump:hover {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 768px) {
+    .rashid-floating-widget {
+        bottom: 16px;
+        left: 16px;
+    }
+    .rashid-floating-widget:hover,
+    .rashid-floating-widget:focus-within,
+    .rashid-floating-widget.expanded {
+        width: calc(100vw - 32px);
+        max-width: 270px;
+    }
+}
+
 
 
 

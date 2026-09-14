@@ -138,6 +138,7 @@
         cursorX: 32347,
         cursorY: 32226,
         customMarkers: [],        // Salvos em localStorage
+        targetMarker: null,       // Marcador de destino "X" no mapa
         highlightedBossId: null,  // Boss focado vindo do Boss Tracker
         highlightPulse: 0,
         pulseAnimId: null
@@ -299,7 +300,13 @@
             });
         }
 
-        // 6. Desenhar Anel de Destaque Animado (Highlight) se houver boss focado
+        // 6. Marcador de Destino "X" (Ao clicar para ver no mapa)
+        if (mapState.targetMarker && mapState.targetMarker.z === floor) {
+            drawTargetXMarker(mapState.targetMarker);
+        }
+        updateBossMapTooltipPosition();
+
+        // 7. Desenhar Anel de Destaque Animado (Highlight) se houver boss focado
         if (mapState.highlightedBossId) {
             const coords = BOSS_COORDINATES[mapState.highlightedBossId];
             if (coords && coords.z === floor) {
@@ -409,6 +416,55 @@
         ctx.stroke();
     }
 
+    // Desenhar Marcador "X" de Destino no Mapa (Estilo Tibia Minimap X, compacto e elegante)
+    function drawTargetXMarker(target) {
+        const pos = worldToScreen(target.x, target.y);
+        const time = Date.now() / 250;
+        const pulse = (Math.sin(time) + 1) / 2; // 0..1
+        const size = 6; // tamanho reduzido do X (12px total, cabe perfeito no SQM)
+
+        ctx.save();
+
+        // 1. Anel sutil pulsante de mira ao redor do X (compacto)
+        const ringRadius = 7 + pulse * 4;
+        ctx.strokeStyle = `rgba(255, 50, 50, ${0.7 - pulse * 0.4})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, ringRadius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 2. Traços do "X" com alto contraste (Estilo clássico Tibia Minimap X)
+        ctx.lineCap = "round";
+
+        // Contorno preto fino para contraste nítido em qualquer piso
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = 3.2;
+        ctx.beginPath();
+        ctx.moveTo(pos.x - size, pos.y - size);
+        ctx.lineTo(pos.x + size, pos.y + size);
+        ctx.moveTo(pos.x + size, pos.y - size);
+        ctx.lineTo(pos.x - size, pos.y + size);
+        ctx.stroke();
+
+        // Traço vermelho vibrante
+        ctx.strokeStyle = "#ff2222";
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(pos.x - size, pos.y - size);
+        ctx.lineTo(pos.x + size, pos.y + size);
+        ctx.moveTo(pos.x + size, pos.y - size);
+        ctx.lineTo(pos.x - size, pos.y + size);
+        ctx.stroke();
+
+        // Centro em ponto branco sutil
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+    }
+
     // Mira central do mapa
     function drawCrosshair() {
         const cx = canvas.width / 2;
@@ -435,9 +491,9 @@
     function updateHUD() {
         const coordsEl = document.getElementById("map-cursor-coords");
         const coordsFloatEl = document.getElementById("map-cursor-coords-float");
-        const floorLabel = document.getElementById("map-current-floor-label");
         const floorFloatLabel = document.getElementById("map-floor-float-label");
         const zoomLabel = document.getElementById("map-zoom-label");
+
 
         const z = mapState.floor;
         const relFloor = formatFloorDisplay(z);
@@ -450,7 +506,7 @@
         if (z === 7) floorName = "Superfície (Térreo - 0)";
         else if (z < 7) floorName = `Andar Superior ${relFloor} (Floor ${z})`;
         else floorName = `Subsolo ${relFloor} (Floor ${z})`;
-        if (floorLabel) floorLabel.innerText = floorName;
+
 
         if (floorFloatLabel) {
             floorFloatLabel.innerText = relFloor;
@@ -505,27 +561,38 @@
         }
     };
 
-    // Pular / Centralizar em Coordenadas Específicas
+    // Pular / Centralizar em Coordenadas Específicas e Marcar com "X"
     window.jumpToMapCoordinate = function(x, y, z, bossData = null) {
-        mapState.centerX = Math.max(WORLD_MIN_X, Math.min(WORLD_MAX_X, parseInt(x, 10)));
-        mapState.centerY = Math.max(WORLD_MIN_Y, Math.min(WORLD_MAX_Y, parseInt(y, 10)));
-        if (z !== undefined && z !== null) {
-            mapState.floor = Math.max(0, Math.min(15, parseInt(z, 10)));
-        }
+        const targetX = Math.max(WORLD_MIN_X, Math.min(WORLD_MAX_X, parseInt(x, 10)));
+        const targetY = Math.max(WORLD_MIN_Y, Math.min(WORLD_MAX_Y, parseInt(y, 10)));
+        const targetZ = (z !== undefined && z !== null) ? Math.max(0, Math.min(15, parseInt(z, 10))) : mapState.floor;
+
+        mapState.centerX = targetX;
+        mapState.centerY = targetY;
+        mapState.floor = targetZ;
+
+        // Marca o mapa com um "X" exatamente no ponto de destino
+        mapState.targetMarker = {
+            x: targetX,
+            y: targetY,
+            z: targetZ,
+            label: bossData ? (bossData.name || "Destino") : `X: ${targetX}, Y: ${targetY}`,
+            bossData: bossData
+        };
 
         if (bossData && bossData.id) {
             mapState.highlightedBossId = bossData.id;
             mapState.zoomIndex = Math.max(2, mapState.zoomIndex); // Garante zoom adequado
-            startHighlightAnimation();
             showBossMapTooltip(bossData, mapState.centerX, mapState.centerY);
         } else {
             mapState.highlightedBossId = null;
         }
 
+        startHighlightAnimation();
         renderMap();
     };
 
-    // Animação de pulso para boss selecionado
+    // Animação de pulso para o alvo marcado com "X"
     function startHighlightAnimation() {
         if (mapState.pulseAnimId) cancelAnimationFrame(mapState.pulseAnimId);
         let count = 0;
@@ -533,35 +600,69 @@
             mapState.highlightPulse += 0.12;
             count++;
             renderMap();
-            if (count < 120) { // Anima por ~2 segundos
+            if (count < 240) { // Anima ativamente por ~4 segundos
                 mapState.pulseAnimId = requestAnimationFrame(animate);
             } else {
-                mapState.highlightedBossId = null;
+                mapState.pulseAnimId = null;
                 renderMap();
             }
         }
         mapState.pulseAnimId = requestAnimationFrame(animate);
     }
 
-    // Exibir Tooltip de Boss no Mapa
+    // Exibir Tooltip de Boss / NPC no Mapa (Posicionado superior à marcação do X)
     function showBossMapTooltip(boss, wx, wy) {
         const tooltip = document.getElementById("map-boss-tooltip");
         if (!tooltip) return;
 
-        const screenPos = worldToScreen(wx, wy);
-        tooltip.style.left = `${screenPos.x}px`;
-        tooltip.style.top = `${screenPos.y - 15}px`;
-        tooltip.style.display = "block";
+        tooltip.dataset.worldX = wx;
+        tooltip.dataset.worldY = wy;
+        tooltip.dataset.floor = mapState.floor;
 
         const imgEl = tooltip.querySelector(".map-tooltip-img");
         const nameEl = tooltip.querySelector(".map-tooltip-name");
         const catEl = tooltip.querySelector(".map-tooltip-cat");
+        const locEl = tooltip.querySelector(".map-tooltip-loc");
         const coordsEl = tooltip.querySelector(".map-tooltip-coords");
 
         if (imgEl) imgEl.src = boss.image || "imagens/Compass.gif";
         if (nameEl) nameEl.innerText = boss.name;
-        if (catEl) catEl.innerText = `${boss.categoryLabel || 'Boss'} (${boss.chancePercent !== undefined ? boss.chancePercent + '%' : ''})`;
-        if (coordsEl) coordsEl.innerText = `X: ${wx} | Y: ${wy} | Z: ${mapState.floor} (${formatFloorDisplay(mapState.floor)})`;
+        if (catEl) {
+            const chanceStr = (boss.chancePercent !== undefined && boss.chancePercent !== null) ? ` (${boss.chancePercent}%)` : '';
+            catEl.innerText = `${boss.categoryLabel || 'Criatura'}${chanceStr}`;
+        }
+        if (locEl) {
+            if (boss.location) {
+                locEl.innerText = `📍 ${boss.location}`;
+                locEl.style.display = "block";
+            } else {
+                locEl.style.display = "none";
+            }
+        }
+        if (coordsEl) coordsEl.innerText = `${wx}, ${wy}, ${mapState.floor} (${formatFloorDisplay(mapState.floor)})`;
+
+        tooltip.style.display = "block";
+        updateBossMapTooltipPosition();
+    }
+
+    // Atualiza a posição da tooltip sincronizada com o movimento do mapa
+    function updateBossMapTooltipPosition() {
+        const tooltip = document.getElementById("map-boss-tooltip");
+        if (!tooltip || tooltip.style.display === "none") return;
+
+        const wx = parseInt(tooltip.dataset.worldX, 10);
+        const wy = parseInt(tooltip.dataset.worldY, 10);
+        const z = parseInt(tooltip.dataset.floor, 10);
+
+        if (isNaN(wx) || isNaN(wy) || z !== mapState.floor) {
+            tooltip.style.display = "none";
+            return;
+        }
+
+        const screenPos = worldToScreen(wx, wy);
+        tooltip.style.left = `${screenPos.x}px`;
+        // Posicionado um pouco superior à marcação do X (20px acima para ficar com espaçamento perfeito)
+        tooltip.style.top = `${screenPos.y - 20}px`;
     }
 
     // Exibir Tooltip de Marcador Personalizado
@@ -651,6 +752,17 @@
             const rect = canvas.getBoundingClientRect();
             const sx = e.clientX - rect.left;
             const sy = e.clientY - rect.top;
+
+            // 0. Checar se clicou no Marcador de Destino "X"
+            if (mapState.targetMarker && mapState.targetMarker.z === mapState.floor) {
+                const sp = worldToScreen(mapState.targetMarker.x, mapState.targetMarker.y);
+                if (Math.hypot(sx - sp.x, sy - sp.y) <= 16) {
+                    if (mapState.targetMarker.bossData) {
+                        showBossMapTooltip(mapState.targetMarker.bossData, mapState.targetMarker.x, mapState.targetMarker.y);
+                    }
+                    return;
+                }
+            }
 
             // 1. Checar se clicou em um marcador personalizado
             const clickedCustom = mapState.customMarkers.find(m => {
@@ -916,10 +1028,6 @@
 
     window.toggleMapBosses = function() {
         mapState.showBossMarkers = !mapState.showBossMarkers;
-        const btn1 = document.getElementById("btn-toggle-boss-markers");
-        const btn2 = document.getElementById("btn-quick-toggle-bosses");
-        if (btn1) btn1.classList.toggle("active", mapState.showBossMarkers);
-        if (btn2) btn2.classList.toggle("active", mapState.showBossMarkers);
         renderMap();
         if (typeof showCustomToast === "function") {
             showCustomToast(mapState.showBossMarkers ? "💀 Marcadores de Bosses ATIVADOS" : "💀 Marcadores de Bosses OCULTADOS");
@@ -928,10 +1036,6 @@
 
     window.toggleMapPOIs = function() {
         mapState.showPOIs = !mapState.showPOIs;
-        const btn1 = document.getElementById("btn-toggle-pois");
-        const btn2 = document.getElementById("btn-quick-toggle-pois");
-        if (btn1) btn1.classList.toggle("active", mapState.showPOIs);
-        if (btn2) btn2.classList.toggle("active", mapState.showPOIs);
         renderMap();
         if (typeof showCustomToast === "function") {
             showCustomToast(mapState.showPOIs ? "🏛️ Depots / Cidades ATIVADOS" : "🏛️ Depots / Cidades OCULTADOS");

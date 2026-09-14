@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // DADOS COMPLETOS DE TODOS OS IMBUEMENTS DO TIBIA
 // Apenas Void, Vampirism e Strike suportam troca por Gold Token (NPC Yana)
 // ============================================================
@@ -33,7 +33,7 @@ const IMBUEMENTS = {
         name: "Strike",
         subtitle: "Critical Hit (Armas)",
         theme: "strike",
-        icon: "imagens/Strike_(Dano_Crítico).gif",
+        icon: "imagens/Strike_(Dano_Critico).gif",
         supportsGoldToken: true,
         items: [
             { id: "protective_charm", name: "Protective Charm", qtyBasic: 20, qtyIntricate: 20, qtyPowerful: 20, defaultPrice: 2500 },
@@ -109,7 +109,7 @@ const IMBUEMENTS = {
         name: "Lich Shroud",
         subtitle: "Proteção Morte (Armaduras)",
         theme: "death",
-        icon: "imagens/Lich_Shroud_(Proteção_de_Morte).gif",
+        icon: "imagens/Lich_Shroud_(Protecao_de_Morte).gif",
         supportsGoldToken: false,
         items: [
             { id: "flask_of_embalming_fluid", name: "Flask of Embalming Fluid", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 2000 },
@@ -121,7 +121,7 @@ const IMBUEMENTS = {
         name: "Snake Skin",
         subtitle: "Proteção Terra (Armaduras)",
         theme: "earth",
-        icon: "imagens/Snake_Skin_(Proteção_de_Terra).gif",
+        icon: "imagens/Snake_Skin_(Protecao_de_Terra).gif",
         supportsGoldToken: false,
         items: [
             { id: "piece_of_swampling_wood", name: "Piece of Swampling Wood", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 1500 },
@@ -133,7 +133,7 @@ const IMBUEMENTS = {
         name: "Dragon Hide",
         subtitle: "Proteção Fogo (Armaduras)",
         theme: "fire",
-        icon: "imagens/Dragon_Hide_(Proteção_de_Fogo).gif",
+        icon: "imagens/Dragon_Hide_(Protecao_de_Fogo).gif",
         supportsGoldToken: false,
         items: [
             { id: "green_dragon_leather", name: "Green Dragon Leather", qtyBasic: 20, qtyIntricate: 20, qtyPowerful: 20, defaultPrice: 2000 },
@@ -145,7 +145,7 @@ const IMBUEMENTS = {
         name: "Quara Scale",
         subtitle: "Proteção Gelo (Armaduras)",
         theme: "ice",
-        icon: "imagens/Quara_Scale_(Proteção_de_Gelo).gif",
+        icon: "imagens/Quara_Scale_(Protecao_de_Gelo).gif",
         supportsGoldToken: false,
         items: [
             { id: "winter_wolf_fur", name: "Winter Wolf Fur", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 2000 },
@@ -157,7 +157,7 @@ const IMBUEMENTS = {
         name: "Cloud Fabric",
         subtitle: "Proteção Energia (Armaduras)",
         theme: "energy",
-        icon: "imagens/Cloud_Fabric_(Proteção_de_Energia).gif",
+        icon: "imagens/Cloud_Fabric_(Protecao_de_Energia).gif",
         supportsGoldToken: false,
         items: [
             { id: "wyvern_talisman", name: "Wyvern Talisman", qtyBasic: 20, qtyIntricate: 20, qtyPowerful: 20, defaultPrice: 2500 },
@@ -169,7 +169,7 @@ const IMBUEMENTS = {
         name: "Demon Presence",
         subtitle: "Proteção Santo (Armaduras)",
         theme: "holy",
-        icon: "imagens/Demon_Presence_(Proteção_de_Sagrado).gif",
+        icon: "imagens/Demon_Presence_(Protecao_de_Sagrado).gif",
         supportsGoldToken: false,
         items: [
             { id: "cultish_robe", name: "Cultish Robe", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 2000 },
@@ -181,7 +181,7 @@ const IMBUEMENTS = {
         name: "Vibrancy",
         subtitle: "Remove Paralisia (Botas)",
         theme: "prot",
-        icon: "imagens/Vibrancy_(Remoção_de_Paralisia).gif",
+        icon: "imagens/Vibrancy_(Remocao_de_Paralisia).gif",
         supportsGoldToken: false,
         items: [
             { id: "wereboar_hoof", name: "Wereboar Hoof", qtyBasic: 20, qtyIntricate: 20, qtyPowerful: 20, defaultPrice: 3000 },
@@ -195,7 +195,7 @@ const IMBUEMENTS = {
         name: "Epiphany",
         subtitle: "Magic Level (Magia)",
         theme: "skill",
-        icon: "imagens/Epiphany_(Skillboost_de_Nível_Mágico).gif",
+        icon: "imagens/Epiphany_(Skillboost_de_Nivel_Magico).gif",
         supportsGoldToken: false,
         items: [
             { id: "elvish_talisman", name: "Elvish Talisman", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 800 },
@@ -243,7 +243,7 @@ const IMBUEMENTS = {
         name: "Precision",
         subtitle: "Distance Fighting (Arco)",
         theme: "skill",
-        icon: "imagens/Precision_(Skillboost_de_Distância).gif",
+        icon: "imagens/Precision_(Skillboost_de_Distancia).gif",
         supportsGoldToken: false,
         items: [
             { id: "elven_scouting_glass", name: "Elven Scouting Glass", qtyBasic: 25, qtyIntricate: 25, qtyPowerful: 25, defaultPrice: 2000 },
